@@ -1,11 +1,11 @@
 function co = ctrb(a, b)
 
-  if argn(2) == 1 then       // ctrb (sys)
+  if argn(2) == 1 then
     if typeof(a) <> 'ltisys' then
       error("ctrb: argument must be an lti system");
     end
     [a, b, c, d] = ss2ss(a);
-  elseif argn(2) == 2 then   // ctrb (a, b)
+  elseif argn(2) == 2 then
     if size(a,1) <> size(a,2) | size(a,1) <> size(b,1) then
       error("ctrb: invalid arguments (a, b)");
     end
