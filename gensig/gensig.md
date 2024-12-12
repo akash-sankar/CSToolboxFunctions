@@ -19,11 +19,11 @@ Generates periodic signal.
 
 ## Examples
 1.
-   ```
-   [x,t]=gensig('sin',1,1);
-   plot(t,x);
-   ```
-   ![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
+```
+[x,t]=gensig('sin',1,1);
+plot(t,x);
+```
+![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
   
 2.
    ```
