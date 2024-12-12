@@ -30,7 +30,7 @@ Generates periodic signal.
    [x,t]=gensig('cos',3);
    plot(t,x);
    ```
-   ![image](https://github.com/user-attachments/assets/f59db2b0-4426-47b9-9d1d-2ca32b945dbf)
+   ![image](https://github.com/user-attachments/assets/0f67c1fb-0775-4242-ba6c-171bea244358)
 
 3.
    ```
