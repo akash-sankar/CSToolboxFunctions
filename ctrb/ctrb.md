@@ -15,7 +15,7 @@ Return controllability matrix.
 - `a` (Matrix): State matrix (n-by-n).
 - `b` (Matrix): Input matrix (n-by-m).
 
-## Deoendecies
+## Dependecies
 ss2ss
 
 ## Examples
