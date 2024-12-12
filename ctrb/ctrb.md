@@ -1,8 +1,8 @@
-#ctrb
+# ctrb
 
-##Calling Sequence
--`co = ctrb (sys)`
--`co = ctrb (a, b)`
+## Calling Sequence
+- `co = ctrb (sys)`
+- `co = ctrb (a, b)`
 
 Return controllability matrix.
 
