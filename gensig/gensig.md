@@ -18,14 +18,14 @@ Generates periodic signal.
 - `tsam` (Optional): sampling time in seconds. Default spacing is tau/64.
 
 ## Examples
-1.
+    1.
    ```
    [x,t]=gensig('sin',1,1);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
 
-2. 
+    2. 
    ```
    [x,t]=gensig('cos',3);
    plot(t,x);
