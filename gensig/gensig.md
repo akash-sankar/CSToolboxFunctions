@@ -40,12 +40,13 @@ plot(t,x);
    ![image](https://github.com/user-attachments/assets/31538433-e134-4e9f-acf2-7d62e0f5cab7)
 
 4.
-   ```
+```
    [x,t]=gensig('pulse',3,2);
    plot(t,x);
-   ```
+```
    ![image](https://github.com/user-attachments/assets/e09363f8-47ba-4e7e-b197-9beb9082854f)
-5. ```
+5. 
+```
    [x,t]=gensig('sin');
    ```
    ```
@@ -53,7 +54,8 @@ plot(t,x);
 
    Usage: gensig(sigtype, tau, [tfinal], [tsam])
    ```
-6. ```
+6.
+```
    [x,t]=gensig(sin,1);
    ```
    ```
@@ -61,7 +63,8 @@ plot(t,x);
 
    gensig: first argument must be a string
    ```
-7. ```
+7.
+```
    [x,t]=gensig('cos',-11);
    ```
    ```
@@ -69,7 +72,8 @@ plot(t,x);
 
    gensig: second argument must be a positive number
    ```
-8. ```
+8.
+```
    [x,t]=gensig('square',3,-1);
    ```
    ```
@@ -77,7 +81,8 @@ plot(t,x);
 
    gensig: third argument must be a positive number
    ```
-9. ```
+9.
+```
    [x,t]=gensig('pulse',3,2,0);
    ```
    ```
@@ -85,7 +90,8 @@ plot(t,x);
 
    gensig: fourth argument must be a positive number
    ```
-10. ```
+10.
+```
     [x,t]=gensig('pul',3,2)
     ```
     ```
