@@ -1,7 +1,8 @@
-Function Reference: ctrb
+#ctrb
 
-Function File: co = ctrb (sys)
-Function File: co = ctrb (a, b)
+##Calling Sequence
+-`co = ctrb (sys)`
+-`co = ctrb (a, b)`
 
 Return controllability matrix.
 
