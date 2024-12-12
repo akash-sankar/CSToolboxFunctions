@@ -26,14 +26,14 @@ plot(t,x);
 ![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
   
 2.
-   ```
+```
    [x,t]=gensig('cos',3);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/0f67c1fb-0775-4242-ba6c-171bea244358)
 
 3.
-   ```
+```
    [x,t]=gensig('square',3);
    plot(t,x);
    ```
