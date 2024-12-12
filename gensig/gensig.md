@@ -18,34 +18,34 @@ Generates periodic signal.
 - `tsam` (Optional): sampling time in seconds. Default spacing is tau/64.
 
 ## Examples
-    1.
+1.
    ```
    [x,t]=gensig('sin',1,1);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
-
-    2. 
+  
+3.
    ```
    [x,t]=gensig('cos',3);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/0f67c1fb-0775-4242-ba6c-171bea244358)
 
-3.
+4.
    ```
    [x,t]=gensig('square',3);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/31538433-e134-4e9f-acf2-7d62e0f5cab7)
 
-4.
+5.
    ```
    [x,t]=gensig('pulse',3,2);
    plot(t,x);
    ```
    ![image](https://github.com/user-attachments/assets/e09363f8-47ba-4e7e-b197-9beb9082854f)
-5. ```
+6. ```
    [x,t]=gensig('sin');
    ```
    ```
@@ -53,7 +53,7 @@ Generates periodic signal.
 
    Usage: gensig(sigtype, tau, [tfinal], [tsam])
    ```
-6. ```
+7. ```
    [x,t]=gensig(sin,1);
    ```
    ```
@@ -61,7 +61,7 @@ Generates periodic signal.
 
    gensig: first argument must be a string
    ```
-7. ```
+8. ```
    [x,t]=gensig('cos',-11);
    ```
    ```
@@ -69,7 +69,7 @@ Generates periodic signal.
 
    gensig: second argument must be a positive number
    ```
-8. ```
+9. ```
    [x,t]=gensig('square',3,-1);
    ```
    ```
@@ -77,7 +77,7 @@ Generates periodic signal.
 
    gensig: third argument must be a positive number
    ```
-9. ```
+10. ```
    [x,t]=gensig('pulse',3,2,0);
    ```
    ```
@@ -85,7 +85,7 @@ Generates periodic signal.
 
    gensig: fourth argument must be a positive number
    ```
-10. ```
+11. ```
     [x,t]=gensig('pul',3,2)
     ```
     ```
