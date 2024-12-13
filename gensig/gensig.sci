@@ -1,3 +1,21 @@
+/*2024 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+Calling Sequence
+      [u, t] = gensig (sigtype, tau)
+      [u, t] = gensig (sigtype, tau, tfinal)
+      [u, t] = gensig (sigtype, tau, tfinal, tsam)
+Parameters
+      sigtype: Type of signal to plot
+          Sine wave: `sigtype = "sin"`
+          Cosine wave: `sigtype = "cos"`
+          Square wave: `sigtype = "square"`
+          Periodic pulse: `sigtype = "pulse"`
+      tau: Duration of one period in seconds.
+      tfinal (Optional): Duration of the signal in seconds. Default duration is 5 periods.
+      tsam (Optional): sampling time in seconds. Default spacing is tau/64.
+Description:        
+        Generates periodic signal.
+*/
 function [u,t]=gensig(sigtype,tau,tfinal,tsam)
 
   if argn(2)<2 | argn(2)>4 then
