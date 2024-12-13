@@ -1,3 +1,12 @@
+/*2024 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+Calling Sequence
+      db = mag2db (mag)
+Parameters
+      mag (real-valued scalars and matrices): Magnitude value(s).
+Description:        
+       Convert Magnitude to Decibels (dB).
+*/
 function db = mag2db(mag)
     
     if argn(1)<>1 then
