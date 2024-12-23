@@ -7,7 +7,7 @@
 Sort continuous-time poles by real part (in decreasing order).
 
 ## Parameters
-- `p` (vector):
+- `p` (vector): Continuous-time poles.
 
 ## Dependencies
 gsort
