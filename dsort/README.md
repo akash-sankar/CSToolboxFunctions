@@ -4,10 +4,10 @@
 - `[s, ndx] = dsort(p)`
 
 ## Description
-Sort discrete-time poles by magnitude (in decreasing order).
+Sorts the input vector discrete-time poles, `p`, by magnitude (in decreasing order).
 
 ## Parameters
-- `p` (vector): Discrete-time poles.
+- `p` (Complex vector): Discrete-time poles.
 
 ## Dependencies
 gsort
