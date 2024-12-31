@@ -23,50 +23,57 @@ ss2ss
 ```
 A = [1, 0; 0, -0.5];
 B = [8; 8]
-Co = ctrb(A, B);
-disp(Co);
+co = ctrb(A, B);
 ```
 ```
- Co =
+ co =
    8.   8.
    8.  -4.
 ```
 2.
 ```
-A = [-1 0 0 0; 0 -2 0 0; 0 0 -3 0; 0 0 0 -4];
-B = [1; 1; 0; 0];
-Co = ctrb(A, B);
-disp(Co);
+A = [-1 1 + %i; 0 -2];
+B = [1; 0];
+co = ctrb(A, B);
 ```
 ```
- Co = [4x4 double]
+at line    13 of function ctrb ( /Users/akashnandan/Desktop/Scilab/Akash_S_CStoolboxfunction/ctrb/ctrb.sci line 13 )
 
-   1.  -1.   1.  -1.
-   1.  -2.   4.  -8.
-   0.   0.   0.   0.
-   0.   0.   0.   0.
+ctrb: invalid arguments (a, b)
 ```
 
 3.
 ```
+sys = syslin('c',[-2 1;0 -3], [4; 1], [1 0], 0);
+co = ctrb(sys);
 ```
 ```
+co = [2x2 double]
+
+   4.  -7.
+   1.  -3.
 ```
 
 4.
 ```
+A = [1 2 1; 0 1 0; 1 -4 3];
+B = [0; 0; 1];
+co = ctrb(A, B);
 ```
 ```
+co = [3x3 double]
+
+   0.   1.   4. 
+   0.   0.   0. 
+   1.   3.   10.
 ```
 
 5.
 ```
+co = ctrb();
 ```
 ```
-```
+at line    20 of function ctrb ( /Users/akashnandan/Desktop/Scilab/Akash_S_CStoolboxfunction/ctrb/ctrb.sci line 20 )
 
-6.
-```
-```
-```
+Incorrect number of arguments
 ```
