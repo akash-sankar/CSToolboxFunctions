@@ -1,3 +1,15 @@
+/*2024 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+Calling Sequence:
+        ob = ctrb (sys)
+        ob = ctrb (a, c)
+Parameters:
+        sys (State-space): LTI model.
+        a (Real matrix): State matrix (n-by-n).
+        b (Real matrix): Input matrix (p-by-n).
+Description:
+        Return controlability matrix.
+*/
 function co = ctrb(a, b)
 
   if nargin == 1 then
