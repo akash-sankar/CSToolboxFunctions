@@ -1,8 +1,8 @@
 /*2024 Author: Akash S <akash.ktsn@gmail.com>*/
 /*
 Calling Sequence:
-        ob = ctrb (sys)
-        ob = ctrb (a, c)
+        co = ctrb (sys)
+        co = ctrb (a, c)
 Parameters:
         sys (State-space): LTI model.
         a (Real matrix): State matrix (n-by-n).
