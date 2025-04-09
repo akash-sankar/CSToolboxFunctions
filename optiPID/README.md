@@ -7,9 +7,10 @@
 Numerical optimization of a PID controller using an objective function.
 
 In this example called optiPID, loosely based on [1], it is assumed that the plant 
-                  1
-P(s) = -----------------------
-       (s^2 + s + 1) (s + 1)^4 
+
+                      1
+    P(s) = -----------------------
+           (s^2 + s + 1) (s + 1)^4 
 
 is controlled by a PID controller with second-order roll-off
                  1                1
