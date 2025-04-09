@@ -1,3 +1,11 @@
+/*2024 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+Calling Sequence:
+        optiPID()
+Description:
+       Numerical optimization of a PID controller using an objective function.
+
+*/
 clear;
 clc;
 
