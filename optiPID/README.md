@@ -6,20 +6,17 @@
 ## Description
 Numerical optimization of a PID controller using an objective function.
 
-In this example called optiPID, loosely based on [1], it is assumed that the plant
-
+In this example called optiPID, loosely based on [1], it is assumed that the plant 
                   1
 P(s) = -----------------------
        (s^2 + s + 1) (s + 1)^4 
 
 is controlled by a PID controller with second-order roll-off
-
                  1                1
 C(s) = Kp (1 + ---- + Td s) -------------
                Ti s         (tau s + 1)^2
 
 in the usual negative feedback structure
-
          L(s)       P(s) C(s)
 T(s) = -------- = -------------
        1 + L(s)   1 + P(s) C(s)
@@ -28,13 +25,11 @@ The plant P(s) is of higher order but benign. The initial values for the control
 These values are to be improved using a numerical optimization as shown below. As with all numerical methods, this approach can never guarantee that a proposed solution is a 
 global minimum. Therefore, good initial guesses for the parameters to be optimized are very important. The Octave function fminsearch minimizes the objective function J, 
 which is chosen to be
-
                     inf 
 J(Kp, Ti, Td) = mu1 INT t |e(t)|dt  +  mu2 (||y(t)||   - 1)  +  mu3 ||S(jw)||
                      0                               inf                       inf
 
 This particular objective function penalizes the integral of time-weighted absolute error
-
        inf 
 ITAE = INT t |e(t)|dt
         0             
@@ -50,7 +45,6 @@ Ms = ||S(jw)||
               inf
 
 is minimized for good robustness, where S(jw) denotes the sensitivity transfer function
-
            1            1
 S(s) = -------- = -------------
        1 + L(s)   1 + P(s) C(s)
