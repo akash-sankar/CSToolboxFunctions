@@ -56,5 +56,5 @@ The constants mu1, mu2 and mu3 are relative weighting factors or Â«tuning knobsÂ
 
 
 References:
-[1] Guzzella, L. Analysis and Design of SISO Control Systems, VDF Hochschulverlag, ETH Zurich, 2007
-[2] Astroem, K. and Haegglund, T. PID Controllers: Theory, Design and Tuning, Second Edition, Instrument Society of America, 1995
+- [1] Guzzella, L. Analysis and Design of SISO Control Systems, VDF Hochschulverlag, ETH Zurich, 2007
+- [2] Astroem, K. and Haegglund, T. PID Controllers: Theory, Design and Tuning, Second Edition, Instrument Society of America, 1995
