@@ -24,10 +24,7 @@ in the usual negative feedback structure
     T(s) = -------- = -------------
            1 + L(s)   1 + P(s) C(s)
 
-The plant P(s) is of higher order but benign. The initial values for the controller parameters Kp, Ti and Td are obtained by applying the Astroem and Haegglund rules [2]. 
-These values are to be improved using a numerical optimization as shown below. As with all numerical methods, this approach can never guarantee that a proposed solution is a 
-global minimum. Therefore, good initial guesses for the parameters to be optimized are very important. The Octave function fminsearch minimizes the objective function J, 
-which is chosen to be
+The plant P(s) is of higher order but benign. The initial values for the controller parameters Kp, Ti and Td are obtained by applying the Astroem and Haegglund rules [2]. These values are to be improved using a numerical optimization as shown below. As with all numerical methods, this approach can never guarantee that a proposed solution is a global minimum. Therefore, good initial guesses for the parameters to be optimized are very important. The Octave function fminsearch minimizes the objective function J, which is chosen to be
 
                         inf 
     J(Kp, Ti, Td) = mu1 INT t |e(t)|dt  +  mu2 (||y(t)||   - 1)  +  mu3 ||S(jw)||
