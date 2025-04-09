@@ -6,7 +6,8 @@ Parameters:
         key (String): The name of the property.
         value: The value of the property.
 Description:
-        Create options struct opt from a number of key and value pairs. For use with order reduction and system identification functions. Option structs are a way to avoid typing the same key and value pairs over and over again.
+        Create options struct opt from a number of key and value pairs. For use with order reduction and system identification functions. 
+        Option structs are a way to avoid typing the same key and value pairs over and over again.
 */
 funct
 function opt = options(varargin)
