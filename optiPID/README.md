@@ -13,14 +13,16 @@ In this example called optiPID, loosely based on [1], it is assumed that the pla
            (s^2 + s + 1) (s + 1)^4 
 
 is controlled by a PID controller with second-order roll-off
-                 1                1
-C(s) = Kp (1 + ---- + Td s) -------------
-               Ti s         (tau s + 1)^2
+
+                    1                1
+    C(s) = Kp (1 + ---- + Td s) -------------
+                   Ti s         (tau s + 1)^2
 
 in the usual negative feedback structure
-         L(s)       P(s) C(s)
-T(s) = -------- = -------------
-       1 + L(s)   1 + P(s) C(s)
+
+             L(s)       P(s) C(s)
+    T(s) = -------- = -------------
+           1 + L(s)   1 + P(s) C(s)
 
 The plant P(s) is of higher order but benign. The initial values for the controller parameters Kp, Ti and Td are obtained by applying the Astroem and Haegglund rules [2]. 
 These values are to be improved using a numerical optimization as shown below. As with all numerical methods, this approach can never guarantee that a proposed solution is a 
