@@ -28,14 +28,16 @@ The plant P(s) is of higher order but benign. The initial values for the control
 These values are to be improved using a numerical optimization as shown below. As with all numerical methods, this approach can never guarantee that a proposed solution is a 
 global minimum. Therefore, good initial guesses for the parameters to be optimized are very important. The Octave function fminsearch minimizes the objective function J, 
 which is chosen to be
-                    inf 
-J(Kp, Ti, Td) = mu1 INT t |e(t)|dt  +  mu2 (||y(t)||   - 1)  +  mu3 ||S(jw)||
-                     0                               inf                       inf
+
+                        inf 
+    J(Kp, Ti, Td) = mu1 INT t |e(t)|dt  +  mu2 (||y(t)||   - 1)  +  mu3 ||S(jw)||
+                         0                               inf                       inf
 
 This particular objective function penalizes the integral of time-weighted absolute error
-       inf 
-ITAE = INT t |e(t)|dt
-        0             
+
+           inf 
+    ITAE = INT t |e(t)|dt
+            0             
 
 and the maximum overshoot
 
