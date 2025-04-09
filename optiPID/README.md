@@ -41,18 +41,19 @@ This particular objective function penalizes the integral of time-weighted absol
 
 and the maximum overshoot
 
-y    - 1 = ||y(t)||   - 1
- max               inf
+    y    - 1 = ||y(t)||   - 1
+     max               inf
 
 to a unity reference step in the time domain. In the frequency domain, the sensitivity
 
-Ms = ||S(jw)||
-              inf
+    Ms = ||S(jw)||
+                  inf
 
 is minimized for good robustness, where S(jw) denotes the sensitivity transfer function
-           1            1
-S(s) = -------- = -------------
-       1 + L(s)   1 + P(s) C(s)
+
+              1            1
+    S(s) = -------- = -------------
+           1 + L(s)   1 + P(s) C(s)
 
 The constants mu1, mu2 and mu3 are relative weighting factors or «tuning knobs» which reflect the importance of the different design goals. Varying these factors corresponds to changing the emphasis from, say, high performance to good robustness. The main advantage of this approach is the possibility to explore the tradeoffs of the design problem in a systematic way. In a first approach, all three design objectives are weigthed equally. In subsequent iterations, the parameters mu1 = 1, mu2 = 10 and mu3 = 20 are found to yield satisfactory closed-loop performance. This controller results in a system with virtually no overshoot and a phase margin of 64 degrees.
 
