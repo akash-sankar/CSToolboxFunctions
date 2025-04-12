@@ -16,41 +16,50 @@ Create options struct opt from a number of key and value pairs. For use with ord
 ## Examples
 1.
 ```
-opt = options ("method", "spa", "tol", 1e-6)
+opt = options("color", "blue", "size", 10);
+disp(opt);
 ```
 ```
-ans = [struct] with fields:
+  [struct] with fields:
   string: [struct] with fields:
-      method = "spa"
-      tol = 1e-6
+      color = "blue"
+      size = 10
 ```
 2.
 ```
-
+opt = options();
 ```
 ```
-
+"Usage: options(key1, value1, key2, value2, ...)"
 ```
 
 3.
 ```
-
+opt = options("color", "red", "size");
 ```
 ```
-
+Error: Properties and values must come in pairs
 ```
 
 4.
+```
+opt = options("width", 5.5, "enabled", %t, "name", "sensorA");
+```
+```
+  [struct] with fields:
 
-```
-```
-
-```
+  string: [struct] with fields:
+      width = 5.5
+      enabled = %t
+      name = "sensorA"
 ```
 5.
 ```
-
+opt = options("mode", "auto", "mode", "manual");
 ```
 ```
+  [struct] with fields:
 
+  string: [struct] with fields:
+      mode = "manual"
 ```
