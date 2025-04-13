@@ -1,6 +1,9 @@
 // =============================================================================
-// Robust Control of a Mass-Damper-Spring System in Scilab
+// Robust Control of a Mass-Damper-Spring System
 // =============================================================================
+// Reference: Gu, D.W., Petkov, P.Hr. and Konstantinov, M.M.
+//            Robust Control Design with Matlab, Springer 2005
+// ===============================================================================
 
 // Clear workspace
 clc; clear; close;
