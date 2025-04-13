@@ -1,4 +1,4 @@
-# ctrb
+# pidstd
 
 ## Calling Sequence
 - `C = pidstd (Kp)`
