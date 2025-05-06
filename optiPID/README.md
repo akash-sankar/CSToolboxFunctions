@@ -58,3 +58,29 @@ The constants mu1, mu2 and mu3 are relative weighting factors or Â«tuning knobsÂ
 References:
 - [1] Guzzella, L. Analysis and Design of SISO Control Systems, VDF Hochschulverlag, ETH Zurich, 2007
 - [2] Astroem, K. and Haegglund, T. PID Controllers: Theory, Design and Tuning, Second Edition, Instrument Society of America, 1995
+
+## Examples
+
+```
+optiPID()
+```
+```
+optiPID: Astrom/Hagglund PID controller parameters: 
+kp_AH = 0.846609
+Ti_AH = 2.279034
+Td_AH = 0.627673
+optiPID: optimization starts, please be patient ... 
+optiPID: optimized PID controller parameters: 
+kp_opt = 0.601700
+Ti_opt = 2.975100
+Td_opt = 0.961000
+optiPID: closed-loop stability check: 
+st_AH = 1.000000
+st_opt = 1.000000
+optiPID: gain margin gamma [-] and phase margin phi [deg]: 
+gamma_AH = 1.587728
+phi_AH = 31.391352
+gamma_opt = 2.882235
+phi_opt = 64.250430
+```
+![image](https://github.com/user-attachments/assets/18a662dd-6199-4b8d-a26d-fd3ea2a2358f)
