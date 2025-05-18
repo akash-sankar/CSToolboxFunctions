@@ -1,7 +1,7 @@
 # thiran
 
 ## Calling Sequence
-- `sys = thiran (tau, tsam))`
+- `sys = thiran (tau, tsam)`
 
 ## Description
 Approximation of continuous-time delay using a discrete-time allpass Thiran filter.
