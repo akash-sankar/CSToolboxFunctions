@@ -9,9 +9,9 @@ Approximation of continuous-time delay using a discrete-time allpass Thiran filt
 Thiran filters can approximate continuous-time delays that are non-integer multiples of the sampling time (fractional delays). This approximation gives a better matching of the phase shift between the continuous- and the discrete-time system. If there is no fractional part in the delay, then the standard discrete-time delay representation is used.
 
 ## Parameters
-- `tau` (State-space): Transfer function model of the resulting filter. The order of the filter is determined automatically.
+- `sys` (State-space): Transfer function model of the resulting filter. The order of the filter is determined automatically.
 - `tau` (Real scalar): A continuous-time delay, given in time units (seconds).
-- `b` (Real scalar): The sampling time of the resulting Thiran filter.
+- `tsam` (Real scalar): The sampling time of the resulting Thiran filter.
 
 ## Examples
 1.
