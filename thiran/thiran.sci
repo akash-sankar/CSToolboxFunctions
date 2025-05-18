@@ -41,11 +41,10 @@ function sys = thiran (del, tsam)
                 tmp(i+1, j) = (d - N + i) / (d - N + j + i);
             end
         end
-    
-        // Compute coefficients
-        a = 1; // Start with leading coefficient
+
+        a = 1;
         for k = 1:N
-            bin = factorial(N) / (factorial(k) * factorial(N - k)); // binomial coefficient
+            bin = factorial(N) / (factorial(k) * factorial(N - k));
             term = (-1)^k * bin * prod(tmp(:, k));
             a($+1) = term;
         end
