@@ -16,7 +16,7 @@ Parameters:
 Description:
     Return dimensions of iddata set dat.
 */
-function [x, p, m, e] = size_iddata(dat, dim)
+function [x, p, m, e] = size(dat, dim)
 
   if argn(2) > 2 then
     error("Too many input arguments.");
