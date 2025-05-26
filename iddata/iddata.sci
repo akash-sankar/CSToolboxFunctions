@@ -1,3 +1,46 @@
+/*2024 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+iddata - Create identification dataset of output and input signals
+Calling Sequence
+   dat = iddata(y)
+   dat = iddata(y, u)
+   dat = iddata(y, u, tsam)
+   dat = iddata(y, u, tsam, 'key1', value1, ..., 'keyN', valueN)
+
+Parameters
+   dat       : Struct or object with fields y, u, tsam, expname, etc.
+
+   y         : Real matrix or cell array
+               - Single experiment: n-by-p matrix (n samples, p outputs)
+               - Multiple experiments: e-by-1 or 1-by-e cell of n(i)-by-p matrices
+
+   u         : (Optional) Real matrix or cell array
+               - Single experiment: n-by-m matrix (m inputs)
+               - Multiple experiments: cell of n(i)-by-m matrices
+               - If not provided or [], dataset is treated as time series.
+
+   tsam      : (Optional) Real scalar or cell
+               - Scalar: uniform sampling time
+               - Cell: one tsam per experiment
+               - Default is -1 (unspecified)
+
+   'key',val : (Optional) Property-value pairs
+               - 'expname'   : Cell of experiment names
+               - 'outname'   : Cell of output channel names
+               - 'outunit'   : Cell of output channel units
+               - 'inname'    : Cell of input channel names
+               - 'inunit'    : Cell of input channel units
+               - 'timeunit'  : Cell of time unit strings
+               - 'name'      : Name of the dataset
+               - 'notes'     : String or cell of strings
+               - 'userdata'  : Any user-defined data
+
+Description
+   This function generates an identification dataset object bundling input
+   and output signals, sampling time, and optional metadata.
+   It supports single and multiple experiments and is typically used for
+   system identification tasks. Output
+*/
 function dat = iddata(y, u, tsam, varargin)
     // Handle default arguments
     if argn(2) < 1 then
