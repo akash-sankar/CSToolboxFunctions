@@ -12,16 +12,16 @@ Description:
         Return the steady-state covariance.
         covar calculates the stationary covariance of the output y of an LTI model sys driven by Gaussian white noise inputs w. This function handles both continuous- and discrete-time cases.
 */
-function [p, q] = covar(sys, w)
+function [p, q] = covar_control(sys, w)
 
     if nargin ~= 2 then
         error("Usage: [p, q] = covar(sys, w)");
     end
-    if ~(typeof(sys) == "state-space") then
+
+    if typeof(sys) <> "state-space" then
         error("covar: First argument must be an LTI model.");
     end
 
-    // Extract state-space matrices
     [A, B, C, D] = abcd(sys);
     is_continuous = sys.dt == "c";
 
@@ -29,10 +29,12 @@ function [p, q] = covar(sys, w)
         if norm(D, 1) > 0 then
             error("covar: System is not strictly proper.");
         end
-        q = lyap(A, B * w * B','c');
+        q = lyap(A', -(B * w * B'), 'c');
         p = C * q * C';
     else
-        q = lyap(A, B * w * B','d');
+        // Transpose A and transpose final result to match Octave
+        qT = lyap(A', -B * w * B', 'd');
+        q  = qT';
         p = C * q * C' + D * w * D';
     end
 
