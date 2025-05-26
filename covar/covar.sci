@@ -32,7 +32,6 @@ function [p, q] = covar_control(sys, w)
         q = lyap(A', -(B * w * B'), 'c');
         p = C * q * C';
     else
-        // Transpose A and transpose final result to match Octave
         qT = lyap(A', -B * w * B', 'd');
         q  = qT';
         p = C * q * C' + D * w * D';
