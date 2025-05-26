@@ -10,11 +10,21 @@
 - `dat = iddata(y, u, tsam, 'key1', value1, ..., 'keyN', valueN)`
 
 ## Input Parameters
+- `dat` (struct): Identification dataset containing input, output, sampling time, and optional metadata.
+- `y` (Real matrix or cell): Output signal(s).
+- `u` (Real matrix or cell ): Input signal(s).
+- `tsam` (Real scalar or celL): Sampling time
+- `key` (String): Optional metadata key such as `'expname'`, `'inname'`, etc.
+- `value`: Corresponding value for the metadata key.
 
-| Parameter | Type                      | Description |
-|-----------|---------------------------|-------------|
-| `y`       | Real matrix or cell       | Output signal(s). For single experiment: `n-by-p` matrix. For multiple experiments: cell vector of `n(i)-by-p` matrices. |
-| `u`       | Real matrix or cell       | Input signal(s). For single experiment: `n-by-m` matrix. For multiple experiments: cell vector of `n(i)-by-m` matrices. Optional. If omitted or `[]`, dataset is treated as time series. |
-| `tsam`    | Real scalar or cell       | Sampling time. If scalar: same `tsam` for all experiments. If cell: individual `tsam` per experiment. Optional; default is `-1`. |
-| `'key'`   | String                    | Optional metadata key such as `'expname'`, `'inname'`, etc. |
-| `value`   | Various                   | Corresponding value for the metadata key. |
+## Optional Key–Value Pairs
+- `'expname'` (Cell of strings): Names of the experiments, e.g., `{'exp1', 'exp2', ...}`.
+- `'outname'` (Cell of strings): Names of output channels, e.g., `{'y1', 'y2', ...}`.
+- `'outunit'` (Cell of strings): Units for output channels.
+- `'inname'` (Cell of strings): Names of input channels, e.g., `{'u1', 'u2', ...}`.
+- `'inunit'` (Cell of strings): Units for input channels.
+- `'tsam'` (Real scalar or cell): Sampling time(s), same meaning as input `tsam`.
+- `'timeunit'` (Cell of strings): Units for time, per experiment.
+- `'name'` (String): Name of the dataset.
+- `'notes'` (String or cell): Additional comments or notes.
+- `'userdata'`: User-defined data (metadata or raw data).
