@@ -1,4 +1,4 @@
-# ctrb
+# acker
 
 ## Calling Sequence
 - `k = acker (A, b, p)`
