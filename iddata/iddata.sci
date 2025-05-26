@@ -36,10 +36,8 @@ Parameters
                - 'userdata'  : Any user-defined data
 
 Description
-   This function generates an identification dataset object bundling input
-   and output signals, sampling time, and optional metadata.
-   It supports single and multiple experiments and is typically used for
-   system identification tasks. Output
+   This function generates an identification dataset object bundling input and output signals, sampling time, and optional metadata.
+   It supports single and multiple experiments and is typically used forsystem identification tasks. Output
 */
 function dat = iddata(y, u, tsam, varargin)
     // Handle default arguments
