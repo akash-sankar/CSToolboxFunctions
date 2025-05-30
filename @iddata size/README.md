@@ -1,4 +1,4 @@
-# size
+# @iddata/size
 
 ## Calling Sequence
 - `nvec = size (dat)`
