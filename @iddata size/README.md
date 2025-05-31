@@ -21,39 +21,73 @@ Return dimensions of iddata set dat.
 ## Examples
 1.
 ```
-
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+size_iddata(dat)
 ```
 ```
 
 ```
 2.
 ```
-
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+val = size_iddata(dat)
 ```
 ```
+ val = [1x4 double]
 
+   6.   1.   1.   1.
 ```
 
 3.
 ```
-
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+out = size_iddata(dat,2)
 ```
 ```
+ out = 
 
+   1.
 ```
 
 4.
 ```
-
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+[x, p, m, e] = size_iddata(dat)
 ```
 ```
+ x = 
 
+   6.
+
+ p = 
+
+   1.
+
+ m = 
+
+   1.
+
+ e = 
+
+   1.
 ```
 
 5.
 ```
-
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+[x, p, m, e] = size_iddata(dat,10)
 ```
 ```
+at line    54 of function size_iddata ( C:\Users\KARTHIK\Desktop\Scilab\size_iddata.sci line 54 )
 
+Invalid dimension.
+```
+
+5.
+```
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
+[x, p, m, e, y] = size_iddata(dat)
+```
+```
+Wrong number of output arguments.
 ```
