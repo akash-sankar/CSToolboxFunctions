@@ -75,6 +75,19 @@ function dat = iddata(y, u, tsam, varargin)
     end
 
     dat = struct("y", y, "outname", outname, "outunit", outname, "u", u, "inname", inname, "inunit", inname, "tsam", tsam, "timeunit", "", "timedomain", %t, "w", list(), "expname", expname, "name", "", "notes", list(), "userdata", [], "type", "iddata");
+    if argn(2) > 3 then
+        for i = 1:2:length(varargin)
+            key = varargin(i);
+            value = varargin(i + 1);
+            dat(string(key)) = value;
+        end
+    end
+    
+    if(dat.timedomain == %t) then
+        if ~isreal(dat.y) | ~isreal(dat.u)) then
+            error("iddata: require real-valued input and output signals for time domain datasets");
+        end
+    end
 endfunction
 
 function [y, u] = __adjust_iddata__(y, u)
