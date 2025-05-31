@@ -16,7 +16,7 @@ Parameters:
 Description:
     Return dimensions of iddata set dat.
 */
-function [x, p, m, e] = size(dat, dim)
+function [x, p, m, e] = size_iddata(dat, dim)
 
   if argn(2) > 2 then
     error("Too many input arguments.");
@@ -26,45 +26,49 @@ function [x, p, m, e] = size(dat, dim)
     dim = 0;
   end
 
-  e = size(dat.y, "*");       // number of experiments
-  n = zeros(1, e);            // number of samples
+  ylist = dat.y;
+  e = size(ylist); // number of experiments
+  n = zeros(1, e);   // number of samples
+
   for k = 1:e
-    n(k) = size(dat.y(k), 1);
+    ymat = ylist(k); // each experiment
+    n(k) = size(ymat, 1);
   end
 
-  p = size(dat.outname, "*"); // number of output channels
-  m = size(dat.inname, "*");  // number of input channels
+  p = size(dat.outname); // number of outputs
+  m = size(dat.inname);  // number of inputs
 
   select dim
-    case 0 then                             // ... size (dat)
+    case 0 then
       select argn(1)
-        case 0 then                         // size (dat)
+        case 0 then
           stry = ""; stru = ""; stre = "";
           if p <> 1 then stry = "s"; end
           if m <> 1 then stru = "s"; end
           if e <> 1 then stre = "s"; end
           msprintf("IDDATA set with [%s] samples, %d output%s, %d input%s and %d experiment%s.", strcat(string(n), " "), p, stry, m, stru, e, stre);
-        case 1 then     // x = size (dat)
+        case 1 then
           x = [sum(n), p, m, e];
-        case 2 then // [n, p, m, e] = size (dat)
+        case 2 then
           x = n;
         case 3 then
           x = n;
         case 4 then
           x = n;
-        else // more than 4 return values
+        else
           error("Too many output arguments.");
       end
 
-    case 1 then // nvec = size (dat, 1)
+    case 1 then
       x = n;
-    case 2 then // p = size (dat, 2)
+    case 2 then
       x = p;
-    case 3 then // m = size (dat, 3)
+    case 3 then
       x = m;
-    case 4 then // e = size (dat, 4)
+    case 4 then
       x = e;
-    else    // invalid dimension
+    else
       error("Invalid dimension.");
   end
 endfunction
+
