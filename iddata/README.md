@@ -28,3 +28,119 @@
 - `'name'` (String): Name of the dataset.
 - `'notes'` (String or cell): Additional comments or notes.
 - `'userdata'`: User-defined data (metadata or raw data).
+
+## Examples
+1.
+```
+dat = iddata((1:6)',(1:6)')
+```
+```
+ dat = [struct] with fields:
+
+  y: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  outname: (1-element list)
+      (1) = ""
+  outunit: (1-element list)
+      (1) = ""
+  u: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  inname: (1-element list)
+      (1) = ""
+  inunit: (1-element list)
+      (1) = ""
+  tsam: (1-element list)
+      (1) = -1
+  timeunit = ""
+  timedomain = %t
+  w: (empty list)
+  expname: (1-element list)
+      (1) = ""
+  name = ""
+  notes: (empty list)
+  userdata = []
+  type = "iddata"
+```
+2.
+```
+dat = iddata((1:6)',(1:6)',2)
+```
+```
+ dat = [struct] with fields:
+
+  y: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  outname: (1-element list)
+      (1) = ""
+  outunit: (1-element list)
+      (1) = ""
+  u: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  inname: (1-element list)
+      (1) = ""
+  inunit: (1-element list)
+      (1) = ""
+  tsam: (1-element list)
+      (1) = 2
+  timeunit = ""
+  timedomain = %t
+  w: (empty list)
+  expname: (1-element list)
+      (1) = ""
+  name = ""
+  notes: (empty list)
+  userdata = []
+  type = "iddata"
+```
+
+3.
+```
+dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1')
+```
+```
+ dat = [struct] with fields:
+
+  y: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  outname = "Output"
+  outunit: (1-element list)
+      (1) = ""
+  u: (1-element list)
+      (1) = [1;2;3;4;5;6]
+  inname = "Input"
+  inunit: (1-element list)
+      (1) = ""
+  tsam: (1-element list)
+      (1) = -1
+  timeunit = ""
+  timedomain = %t
+  w: (empty list)
+  expname = "Experiment 1"
+  name = ""
+  notes: (empty list)
+  userdata = []
+  type = "iddata"
+```
+
+4.
+```
+dat = iddata()
+```
+```
+at line     3 of function iddata ( C:\Users\KARTHIK\Desktop\Scilab\iddata.sci line 3 )
+
+Wrong number of input arguments
+```
+
+5.
+```
+dat = iddata((1:6)',(1:7)')
+```
+```
+at line    13 of function __experiment_dim__ ( C:\Users\KARTHIK\Desktop\Scilab\iddata.sci line 104 )
+at line    13 of function __iddata_dim__     ( C:\Users\KARTHIK\Desktop\Scilab\iddata.sci line 69 )
+at line    19 of function iddata             ( C:\Users\KARTHIK\Desktop\Scilab\iddata.sci line 19 )
+
+iddata: matrices y and u must have same number of rows
+```
+
