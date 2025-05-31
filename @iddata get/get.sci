@@ -156,7 +156,8 @@ function key = __match_key__(str, props, caller)
         error("%s: key name must be a string", caller);
     end
 
-    idx = strcmp(str, props, "i");
+    idx = convstr(props, "l") == convstr(str, "l");
+
     n = sum(idx);
     if n == 1 then
         key = convstr(str, "l");
@@ -167,19 +168,23 @@ function key = __match_key__(str, props, caller)
 
     idx = [];
     for i = 1:size(props, "*")
-        match_len = min(length(str), length(props(i)));
-        if strncmpi(str, props(i), match_len) then
+        s2 = props(i);
+        match_len = min(length(str), length(s2));
+        if convstr(part(str, 1:match_len), "l") == convstr(part(s2, 1:match_len), "l") then
             idx($+1) = i;
         end
     end
+
     n = length(idx);
 
     if n == 1 then
         key = convstr(props(idx(1)), "l");
     elseif n > 1 then
-        error("%s: key name ""%s"" is ambiguous", caller, str);
+        err = "iddata: get: key name """+str+""" is ambiguous";
+        error(err);
     else
-        error("%s: key name ""%s"" is unknown", caller, str);
+        err = "iddata: get: key name """+str+""" is unknown";
+        error(err);
     end
 endfunction
 
