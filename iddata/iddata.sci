@@ -83,11 +83,6 @@ function dat = iddata(y, u, tsam, varargin)
         end
     end
     
-    if(dat.timedomain == %t) then
-        if ~isreal(dat.y) | ~isreal(dat.u)) then
-            error("iddata: require real-valued input and output signals for time domain datasets");
-        end
-    end
 endfunction
 
 function [y, u] = __adjust_iddata__(y, u)
