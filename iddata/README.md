@@ -102,12 +102,14 @@ dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Exp
 
   y: (1-element list)
       (1) = [1;2;3;4;5;6]
-  outname = "Output"
+  outname: (1-element list)
+      (1) = "Output"
   outunit: (1-element list)
       (1) = ""
   u: (1-element list)
       (1) = [1;2;3;4;5;6]
-  inname = "Input"
+  inname: (1-element list)
+      (1) = "Input"
   inunit: (1-element list)
       (1) = ""
   tsam: (1-element list)
@@ -115,7 +117,8 @@ dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Exp
   timeunit = ""
   timedomain = %t
   w: (empty list)
-  expname = "Experiment 1"
+  expname: (1-element list)
+      (1) = "Experiment 1"
   name = ""
   notes: (empty list)
   userdata = []
