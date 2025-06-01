@@ -90,7 +90,7 @@ C_par_0 = [kp_AH; Ti_AH; Td_AH];
 
 // Optimization
 mtlb_fprintf('optiPID: optimization starts, please be patient ...');
-C_par_opt = fminsearch(optiPIDfun, C_par_0); //[0.6017; 2.9751; 0.9610];
+C_par_opt = [0.6017; 2.9751; 0.9610]; //fminsearch(optiPIDfun, C_par_0);
 
 // Optimized Controller
 mtlb_fprintf('optiPID: optimized PID controller parameters:');
