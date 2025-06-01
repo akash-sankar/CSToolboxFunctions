@@ -2,6 +2,8 @@
 
 ## Calling Sequence
 - `[a, b, c, d, tsam] = ssdata (sys)`
+- `[a, b, c, d, tsam] = ssdata (sys, tsam_in)`
+- `[a, b, c, d, tsam] = ssdata (sys, tsam_in, e_in)`
 
 ## Description
 Access state-space model data. Argument sys is not limited to state-space models. If sys is not a state-space model, it is converted automatically.
@@ -13,6 +15,8 @@ Access state-space model data. Argument sys is not limited to state-space models
 - `d` (Real matrix): Feedthrough matrix (p-by-m).
 - `tsam` (Real scalar): Sampling time in seconds. If sys is a continuous-time model, a zero is returned.
 - `sys` (State-space): LTI system.
+- `tsam_in` (Real scalar): Sampling time in seconds. If sys is a continuous-time model, a zero is returned.
+- `e_in` (Real Matrix): Descriptor matrix
 
 ## Examples
 1.
