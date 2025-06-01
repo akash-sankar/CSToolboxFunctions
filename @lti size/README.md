@@ -14,7 +14,8 @@ LTI model size, i.e. number of outputs and inputs.
 - `p` (Real scalar): Number of outputs.
 - `m` (Real scalar): Number of inputs.
 - `sys` (State-space): LTI system.
-- `dim (Real scalar): If given a second argument, size will return the size of the corresponding dimension.`val`: Key values of iddata objects.
+- `dim` (Real scalar): If given a second argument, size will return the size of the corresponding dimension.
+- `val`: Key values of iddata objects.
 
 ## Examples
 1.
