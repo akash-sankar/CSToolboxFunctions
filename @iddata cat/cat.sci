@@ -4,7 +4,7 @@ Calling Sequence:
     dat = cat (dim, dat1, dat2, …)
 Parameters:
     dat (Structure): Concatenated iddata set.
-    dim (Real integer): Dimension along which the concatenation takes place
+    dim (Real scalar): Dimension along which the concatenation takes place
         - dim = 1: Concatenate samples. The samples are concatenated in the following way: dat.y{e} = [dat1.y{e}; dat2.y{e}; …] dat.u{e} = [dat1.u{e}; dat2.u{e}; …] 
                    where e denotes the experiment. The number of experiments, outputs and inputs must be equal for all datasets. Equivalent to vertcat.
         - dim = 2: Concatenate inputs and outputs. The outputs and inputs are concatenated in the following way: dat.y{e} = [dat1.y{e}, dat2.y{e}, …] dat.u{e} = [dat1.u{e}, dat2.u{e}, …] 
