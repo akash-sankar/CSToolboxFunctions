@@ -8,7 +8,7 @@ Shift input channels of dataset dat according to integer nk. A positive value of
 
 ## Parameters
 - `datout` (Structure): Shifted iddata set.
-- `dat` (Structure): iddata set tobe shifted.
+- `dat` (Structure): iddata set to be shifted.
 - `nk` (Real scalar): Amount the iddata set is to be shifted.
 
 ## Examples
