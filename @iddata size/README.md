@@ -83,7 +83,7 @@ at line    54 of function size_iddata ( C:\Users\KARTHIK\Desktop\Scilab\size_idd
 Invalid dimension.
 ```
 
-5.
+6.
 ```
 dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
 [x, p, m, e, y] = size_iddata(dat)
