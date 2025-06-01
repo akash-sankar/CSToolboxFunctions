@@ -10,11 +10,6 @@ Description:
 dat.y{e} = [dat1.y{e}; dat2.y{e}; …] dat.u{e} = [dat1.u{e}; dat2.u{e}; …] 
 where e denotes the experiment. The number of experiments, outputs and inputs must be equal for all datasets.
 */
-function dat = vertcat(varargin)
-    n = length(varargin);
-    dat = struct(); // initialize
-
-    for i = 1:n
-        dat(i) = varargin(i);
-    end
+function dat = vertcat_iddata(varargin)
+    dat = cat_iddata(1, varargin(:));
 endfunction
