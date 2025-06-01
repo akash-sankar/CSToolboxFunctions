@@ -146,4 +146,42 @@ at line    19 of function iddata             ( C:\Users\KARTHIK\Desktop\Scilab\i
 
 iddata: matrices y and u must have same number of rows
 ```
+6.
+```
+dat = iddata({2, 3}, {2, 3})
+```
+```
+ dat = [struct] with fields:
 
+  y: (2-elements list)
+      (1): (1-element list)
+          (1) = 2
+      (2): (1-element list)
+          (1) = 3
+  outname: (1-element list)
+      (1) = ""
+  outunit: (1-element list)
+      (1) = ""
+  u: (2-elements list)
+      (1): (1-element list)
+          (1) = 2
+      (2): (1-element list)
+          (1) = 3
+  inname: (1-element list)
+      (1) = ""
+  inunit: (1-element list)
+      (1) = ""
+  tsam: (2-elements list)
+      (1) = -1
+      (2) = -1
+  timeunit = ""
+  timedomain = %t
+  w: (empty list)
+  expname: (2-elements list)
+      (1) = ""
+      (2) = ""
+  name = ""
+  notes: (empty list)
+  userdata = []
+  type = "iddata"
+```
