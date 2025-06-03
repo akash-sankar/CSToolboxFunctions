@@ -22,7 +22,7 @@ ctrb
 ```
 A = [1 2 1; 0 1 0; 1 -4 3];
 C = [1 1 0];
-ob = obsv(A, C);
+ob = obsv(A, C)
 ```
 ```
 ans = [3x3 double]
@@ -36,7 +36,7 @@ ans = [3x3 double]
 ```
 A = [-1 1 + %i; 0 -2];
 C = [4 1];
-co = ctrb(A, B);
+co = ctrb(A, B)
 ```
 ```
 at line    14 of function ctrb ( /Users/akashnandan/Desktop/Scilab/Akash_S_CStoolboxfunction/ctrb/ctrb.sci line 14 )
@@ -48,7 +48,7 @@ ctrb: invalid arguments (a, b)
 3.
 ```
 sys = syslin('c',[-2 1;0 -3], [4; 1], [1 0], 0);
-ob = obsv(sys);
+ob = obsv(sys)
 ```
 ```
 ob = [2x2 double]
@@ -59,7 +59,7 @@ ob = [2x2 double]
 
 4.
 ```
-ob = obsv();
+ob = obsv()
 ```
 ```
 at line    13 of function obsv ( /Users/akashnandan/Desktop/Scilab/obsv.sci line 13 )
@@ -74,7 +74,7 @@ den = flipdim([1 10 1], 2);
 numPoly = poly(num, 's', 'coeff');
 denPoly = poly(den, 's', 'coeff');
 C = syslin('c', numPoly, denPoly);
-ob = obsv(C);
+ob = obsv(C)
 ```
 ```
 at line     5 of function obsv ( /Users/akashnandan/Desktop/Scilab/obsv.sci line 5 )
