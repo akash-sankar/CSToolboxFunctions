@@ -1,10 +1,11 @@
 # esort
-## Calling Sequence
-- `s = esort(p)`
-- `[s, ndx] = esort(p)`
 
 ## Description
 Sort continuous-time poles, `p`, by real part (in decreasing order).
+
+## Calling Sequence
+- `s = esort(p)`
+- `[s, ndx] = esort(p)`
 
 ## Parameters
 - `p` (vector): Continuous-time poles.
