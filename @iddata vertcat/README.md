@@ -101,3 +101,15 @@ at line     2 of function vertcat      ( C:\Users\KARTHIK\Desktop\Scilab\vertcat
 
 Invalid index.
 ```
+
+5.
+```
+dat = vertcat_iddata(iddata (1, 1), iddata ({2, 3}, {2, 3}))
+```
+```
+at line     4 of function check_experiments ( C:\Users\KARTHIK\Desktop\Scilab\cat_iddata.sci line 112 )
+at line    20 of function cat_iddata        ( C:\Users\KARTHIK\Desktop\Scilab\cat_iddata.sci line 20 )
+at line     2 of function vertcat_iddata    ( C:\Users\KARTHIK\Desktop\Scilab\vertcat.sci line 2 )
+
+iddata: cat: number of experiments do not match
+```
