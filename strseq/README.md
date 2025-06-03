@@ -1,10 +1,10 @@
 # strseq
 
-## Calling Sequence
-- `strvec = strseq (str, idx)`
-
 ## Description
 Return a cell vector of indexed strings by appending the indices idx to the string str.
+
+## Calling Sequence
+- `strvec = strseq (str, idx)`
 
 ## Parameters
 - `strvec` (String vector): Sequence of indexed string.
