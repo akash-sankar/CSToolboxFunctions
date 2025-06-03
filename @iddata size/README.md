@@ -1,12 +1,12 @@
 # @iddata/size
 
+## Description
+Return dimensions of iddata set dat.
+
 ## Calling Sequence
 - `nvec = size (dat)`
 - `ndim = size (dat, dim)`
 - `[n, p, m, e] = size (dat)`
-
-## Description
-Return dimensions of iddata set dat.
 
 ## Parameters
 - `nvec` (Row vector): Row vector. The first element is the total number of samples (rows of dat.y and dat.u). The second element is the number of outputs (columns of dat.y) and the third element the number of inputs (columns of dat.u). The fourth element is the number of experiments.
