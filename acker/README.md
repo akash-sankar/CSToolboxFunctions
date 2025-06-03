@@ -65,7 +65,7 @@ Usage: k = acker(A, b, p)
 A = [1 2; 3 4];
 B = [1 2];
 P = [-2 -3];
-K = acker(A, B, P);
+K = acker(A, B, P)
 ```
 ```
 at line     8 of function acker ( C:\Users\Desktop\Scilab\acker.sci line 8 )
@@ -78,7 +78,7 @@ acker: matrix A and vector b not conformal
 A = [1 0; 0 1];
 B = [0; 1];
 P = 'abc';
-K = acker(A, B, P);
+K = acker(A, B, P)
 ```
 ```
 at line    12 of function acker ( C:\Users\Desktop\Scilab\acker.sci line 12 )
