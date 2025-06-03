@@ -60,7 +60,7 @@ References:
 - [2] Astroem, K. and Haegglund, T. PID Controllers: Theory, Design and Tuning, Second Edition, Instrument Society of America, 1995
 
 ## Examples
-
+1.
 ```
 optiPID()
 ```
@@ -84,3 +84,13 @@ gamma_opt = 2.882235
 phi_opt = 64.250430
 ```
 ![image](https://github.com/user-attachments/assets/18a662dd-6199-4b8d-a26d-fd3ea2a2358f)
+
+2.
+```
+optiPID(1)
+```
+```
+at line     2 of function optiPID ( /Users/akashnandan/Desktop/Scilab/optiPID.sci line 39 )
+
+Wrong number of input arguments: This function has no input argument.
+``` 
