@@ -17,7 +17,7 @@ gsort
 1.
 ```
 p = [-2, -1, -3, 0, 1];
-s = esort(p);
+s = esort(p)
 ```
 ```
 s = [1x5 double]
@@ -27,7 +27,7 @@ s = [1x5 double]
 2.
 ```
 p = [-1 + %i, 2 - %i, 0.5, -3 - 0.2 * %i];
-s = esort(p);
+s = esort(p)
 ```
 ```
 s = [1x4 double]
@@ -37,7 +37,7 @@ s = [1x4 double]
 3.
 ```
 p = [-1 + %i, 2 - %i, 0.5, -3 - 0.2 * %i];
-s = esort(p);
+s = esort(p)
 ```
 ```
 s = [1x4 double]
@@ -51,7 +51,7 @@ ndx = [1x4 double]
 4.
 ```
 p = [-1 + %i, 2 - %i; 0.5, -3 - 0.2 * %i];
-s = esort(p);
+s = esort(p)
 ```
 ```
 at line     4 of function esort ( /Users/akashnandan/Desktop/Scilab/esort.sci line 4 )
@@ -61,7 +61,7 @@ esort: argument must be a vector
 5.
 ```
 p = [-1 + %i, 2 - %i; 0.5, -3 - 0.2 * %i];
-s = esort(p, p);
+s = esort(p, p)
 ```
 ```
 at line     2 of function esort ( /Users/akashnandan/Desktop/Scilab/esort.sci line 2 )
@@ -71,7 +71,7 @@ Wrong number of input arguments.
 5.
 ```
 p = [-1 + %i, 0.5 - %i, 0.5, -3 - 0.2 * %i]; //Poles with same real part
-s = esort(p);
+s = esort(p)
 ```
 ```
  s = [1x4 double]
@@ -81,7 +81,7 @@ s = esort(p);
 6.
 ```
 p = [-1 + %i, 0.5 - %i, 0.5, -3 - 0.2 * %i]; //Poles with same real part
-s = esort(p);
+s = esort(p)
 ```
 ```
  s = [1x4 double]
@@ -91,7 +91,7 @@ s = esort(p);
 7.
 ```
 p = [-1 + %i,- %i, 0.5, - 0.2 * %i]; //Poles with zero real part
-s = esort(p);
+s = esort(p)
 ```
 ```
 s = [1x4 double]
