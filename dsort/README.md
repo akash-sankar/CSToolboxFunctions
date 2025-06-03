@@ -17,7 +17,7 @@ gsort
 1.
 ```
 p = [0.5, 0.9, 0.3, 1.2];
-s = dsort(p);
+s = dsort(p)
 ```
 ```
 s = [1x4 double]
@@ -27,7 +27,7 @@ s = [1x4 double]
 2.
 ```
 p = [0.5 + %i, -0.7, 1 - %i, 0.9 + 0.1 * %i];
-s = dsort(p);
+s = dsort(p)
 ```
 ```
 s = [1x4 double]
@@ -37,7 +37,7 @@ s = [1x4 double]
 3.
 ```
 p = [0.5, 0.9, 0.3, 1.2];
-s = dsort(p);
+s = dsort(p)
 ```
 ```
 s = [1x4 double]
@@ -51,7 +51,7 @@ ndx = [1x4 double]
 4.
 ```
 p = [0.5, 0.9; 0.3, 1.2];
-s = dsort(p);
+s = dsort(p)
 ```
 ```
 at line     4 of function dsort ( /Users/akashnandan/Desktop/Scilab/dsort.sci line 4 )
@@ -60,7 +60,7 @@ esort: argument must be a vector
 ```
 5.
 ```
-s = dsort(); 
+s = dsort()
 ```
 ```
 at line     7 of function dsort ( /Users/akashnandan/Desktop/Scilab/dsort.sci line 7 )
@@ -70,7 +70,7 @@ dsort: One input argument required
 6.
 ```
 p = [0.5, 0.9; 0.3, 1.2];
-[s, ndx] = dsort(p,p);
+[s, ndx] = dsort(p,p)
 ```
 ```
 at line     2 of function dsort ( /Users/akashnandan/Desktop/Scilab/dsort.sci line 2 )
