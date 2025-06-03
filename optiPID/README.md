@@ -51,12 +51,12 @@ is minimized for good robustness, where S(jw) denotes the sensitivity transfer f
 
 The constants mu1, mu2 and mu3 are relative weighting factors or «tuning knobs» which reflect the importance of the different design goals. Varying these factors corresponds to changing the emphasis from, say, high performance to good robustness. The main advantage of this approach is the possibility to explore the tradeoffs of the design problem in a systematic way. In a first approach, all three design objectives are weigthed equally. In subsequent iterations, the parameters mu1 = 1, mu2 = 10 and mu3 = 20 are found to yield satisfactory closed-loop performance. This controller results in a system with virtually no overshoot and a phase margin of 64 degrees.
 
-## Calling Sequence
-- `optiPID()`
-
 References:
 - [1] Guzzella, L. Analysis and Design of SISO Control Systems, VDF Hochschulverlag, ETH Zurich, 2007
 - [2] Astroem, K. and Haegglund, T. PID Controllers: Theory, Design and Tuning, Second Edition, Instrument Society of America, 1995
+
+## Calling Sequence
+- `optiPID()`
 
 ## Examples
 1.
