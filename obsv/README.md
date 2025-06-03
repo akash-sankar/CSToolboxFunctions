@@ -66,3 +66,18 @@ at line    13 of function obsv ( /Users/akashnandan/Desktop/Scilab/obsv.sci line
 
 obsv: Invalid number of arguments
 ```
+
+5.
+```
+num = flipdim([1], 2);
+den = flipdim([1 10 1], 2);
+numPoly = poly(num, 's', 'coeff');
+denPoly = poly(den, 's', 'coeff');
+C = syslin('c', numPoly, denPoly);
+ob = obsv(C);
+```
+```
+at line     5 of function obsv ( /Users/akashnandan/Desktop/Scilab/obsv.sci line 5 )
+
+obsv: argument must be state-space
+```
