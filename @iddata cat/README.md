@@ -1,10 +1,10 @@
 # @iddata/cat
 
-## Calling Sequence
-- `dat = cat (dim, dat1, dat2, …)`
-
 ## Description
 Concatenate iddata sets along dimension dim.
+
+## Calling Sequence
+- `dat = cat (dim, dat1, dat2, …)`
 
 ## Parameters
 - `dat` (Structure): Concatenated iddata set.
