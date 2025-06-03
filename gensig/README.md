@@ -1,11 +1,12 @@
 # gensig
+
+## Description
+Generates periodic signal.
+
 ## Calling Sequence
 - `[u, t] = gensig (sigtype, tau)`
 - `[u, t] = gensig (sigtype, tau, tfinal)`
 - `[u, t] = gensig (sigtype, tau, tfinal, tsam)`
-
-## Description
-Generates periodic signal.
 
 ## Parameters
 - `sigtype`: Type of signal to plot
