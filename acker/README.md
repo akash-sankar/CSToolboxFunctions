@@ -1,8 +1,5 @@
 # acker
 
-## Calling Sequence
-- `k = acker (A, b, p)`
-
 ## Description
 Calculates the state feedback matrix of a completely controllable SISO system using Ackermann’s formula.
 Given the state-space system
@@ -13,6 +10,8 @@ such that the closed loop system matrix
 $A - b\,k$
 has the eigenvalues given in p.
 
+## Calling Sequence
+- `k = acker (A, b, p)`
 
 ## Parameters
 - `k` (Real row vector): State Feedback Gain Vector.
