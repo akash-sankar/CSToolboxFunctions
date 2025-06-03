@@ -1,12 +1,12 @@
 # @lti/ssdata
 
+## Description
+Access state-space model data. Argument sys is not limited to state-space models. If sys is not a state-space model, it is converted automatically.
+
 ## Calling Sequence
 - `[a, b, c, d, tsam] = ssdata (sys)`
 - `[a, b, c, d, tsam] = ssdata (sys, tsam_in)`
 - `[a, b, c, d, tsam] = ssdata (sys, tsam_in, e_in)`
-
-## Description
-Access state-space model data. Argument sys is not limited to state-space models. If sys is not a state-space model, it is converted automatically.
 
 ## Parameters
 - `a` (Real matrix): State matrix (n-by-n).
