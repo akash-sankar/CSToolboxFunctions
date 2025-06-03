@@ -3,7 +3,14 @@
 - `outsys = Boeing707()`
 
 ## Description
-Sorts the input vector discrete-time poles, `p`, by magnitude (in decreasing order).
+Creates a linearized state-space model of a Boeing 707-321 aircraft at
+<img width="443" alt="image" src="https://github.com/user-attachments/assets/0e60e8cc-e55c-4bca-8f1f-e3fec3cb4dec" />
+
+System inputs: Thrust, Elevator angle.
+System outputs: Airspeed, Pitch angle
+
+Reference: 
+- R. Brockhaus: Flugregelung (Flight Control), Springer, 1994.
 
 ## Parameters
 - `p` (Complex vector): Discrete-time poles.
