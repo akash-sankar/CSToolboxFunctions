@@ -1,12 +1,12 @@
 # @iddata/get
 
+## Description
+Return dimensions of iddata set dat.
+
 ## Calling Sequence
 - `get (dat)`
 - `value = get (dat, 'key')`
 - `[val1, val2, …] = get (dat, 'key1', 'key2', …)`
-
-## Description
-Return dimensions of iddata set dat.
 
 ## Parameters
 - `val`: Key values of iddata objects.
