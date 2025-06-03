@@ -1,9 +1,10 @@
 # mag2db
-## Calling Sequence
-- `db = mag2db (mag)`
 
 ## Description
 Convert Magnitude to Decibels (dB).
+
+## Calling Sequence
+- `db = mag2db (mag)`
 
 ## Parameters
 - `mag` (real-valued scalars and matrices): Magnitude value(s)
