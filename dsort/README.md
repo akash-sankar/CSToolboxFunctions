@@ -1,10 +1,11 @@
 # dsort
-## Calling Sequence
-- `s = dsort(p)`
-- `[s, ndx] = dsort(p)`
 
 ## Description
 Sorts the input vector discrete-time poles, `p`, by magnitude (in decreasing order).
+
+## Calling Sequence
+- `s = dsort(p)`
+- `[s, ndx] = dsort(p)`
 
 ## Parameters
 - `p` (Complex vector): Discrete-time poles.
