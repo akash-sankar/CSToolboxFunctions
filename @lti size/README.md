@@ -1,12 +1,12 @@
 # @lti/size
 
+## Description
+LTI model size, i.e. number of outputs and inputs.
+
 ## Calling Sequence
 - `nvec = size (sys)`
 - `n = size (sys, dim)`
 - `[p, m] = size (sys)`
-
-## Description
-LTI model size, i.e. number of outputs and inputs.
 
 ## Parameters
 - `nvec` (Row vector): The first element is the number of outputs (rows) and the second element the number of inputs (columns).
