@@ -1,12 +1,10 @@
 # options
 
+## Description
+Create options struct opt from a number of key and value pairs. For use with order reduction and system identification functions. Option structs are a way to avoid typing the same key and value pairs over and over again.
+
 ## Calling Sequence
 - `opt = options ('key1', value1, 'key2', value2, …)`
-
-## Description
-Return controllability matrix.
-
-Create options struct opt from a number of key and value pairs. For use with order reduction and system identification functions. Option structs are a way to avoid typing the same key and value pairs over and over again.
 
 ## Parameters
 - `opt` (struct): Struct with fields for each key.
