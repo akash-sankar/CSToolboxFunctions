@@ -3,6 +3,8 @@
 ## Description
 Access state-space model data. Argument sys is not limited to state-space models. If sys is not a state-space model, it is converted automatically.
 
+Sampling time, tsam, and Descriptor matrix, E, cannot be declared using syslin() in Scilab's state-space system.  Thus, the descriptor matrix and sample time are obtained as distinct inputs.
+
 ## Calling Sequence
 - `[a, b, c, d, tsam] = ssdata (sys)`
 - `[a, b, c, d, tsam] = ssdata (sys, tsam_in)`
