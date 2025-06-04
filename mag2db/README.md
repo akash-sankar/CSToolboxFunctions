@@ -7,7 +7,8 @@ Convert Magnitude to Decibels (dB).
 - `db = mag2db (mag)`
 
 ## Parameters
-- `mag` (real-valued scalars and matrices): Magnitude value(s)
+- `db` (Real scalar/matrix): Decibel value(s).
+- `mag` (Real scalar/matrix): Magnitude value(s).
 
 ## Examples
 1.
