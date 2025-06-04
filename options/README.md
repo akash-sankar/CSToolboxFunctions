@@ -9,7 +9,7 @@ Create options struct opt from a number of key and value pairs. For use with ord
 ## Parameters
 - `opt` (struct): Struct with fields for each key.
 - `key` (string): The name of the property.
-- `value`: The value of the property.
+- `value` (Real/Complex scalar/vector/matrix, String, Set): The value of the property.
 
 ## Examples
 1.
