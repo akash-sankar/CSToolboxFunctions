@@ -11,7 +11,7 @@ Return dimensions of iddata set dat.
 ## Parameters
 - `value, val1, val2, ...` (Scalar/Vector/Matrix/String): Key values of iddata objects.
 - `dat` (Structure): iddata set.
-- `key` (String): Key of the required value.
+- `key, key1, key2` (String): Key of the required value.
 
 ## Examples
 1.
