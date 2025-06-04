@@ -8,7 +8,9 @@ Sort continuous-time poles, `p`, by real part (in decreasing order).
 - `[s, ndx] = esort(p)`
 
 ## Parameters
-- `p` (vector): Continuous-time poles.
+- `s` (Real/Complex vector): Sorted continuous-time poles by real part (in decreasing order).
+- `ndx` (Real vector): Index values.
+- `p` (Real/Complex vector): Continuous-time poles.
 
 ## Dependencies
 gsort
