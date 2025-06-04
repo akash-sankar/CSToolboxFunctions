@@ -1,7 +1,7 @@
 # pidstd
 
 ## Description
-Return the transfer function C of the PID controller in standard form with first-order roll-off.
+Return the transfer function, C, of the PID controller in standard form with first-order roll-off.
 
                     1        Td s
     C(s) = Kp (1 + ---- + ----------)
@@ -14,10 +14,11 @@ Return the transfer function C of the PID controller in standard form with first
 - `C = pidstd (Kp, Ti, Td, N)`
 
 ## Parameters
-- `Kp`: Proportional gain.
-- `Ti`: Integral time.
-- `Td`: Derivative time.
-- `N`: First-order derivative filter divisor.
+- `C` (Transfer Function): Transfer function of the PID controller.
+- `Kp` (Real scalar): Proportional gain.
+- `Ti` (Real scalar): Integral time.
+- `Td` (Real scalar): Derivative time.
+- `N` (Real scalar): First-order derivative filter divisor.
 
 ## Examples
 1.
