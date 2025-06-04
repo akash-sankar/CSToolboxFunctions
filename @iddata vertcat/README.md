@@ -7,8 +7,8 @@ Vertical concatenation of iddata datasets. The samples are concatenated in the f
 - `dat = vertcat (dat1, dat2, …)`
 
 ## Parameters
-- `dat` (iddata/struct): A single iddata object with all the sample data from inputs vertically concatenated per experiment.
-- `dat1, dat2, ...` (iddata/struct): iddata objects with identical I/O dimensions and experiment structure.
+- `dat` (Structure): A single iddata object with all the sample data from inputs vertically concatenated per experiment.
+- `dat1, dat2, ...` (Structure): iddata objects with identical I/O dimensions and experiment structure.
 
 ## Dependencies
 [@iddata/cat](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20cat)
