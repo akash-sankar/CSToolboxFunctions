@@ -10,12 +10,12 @@
 - `dat = iddata(y, u, tsam, 'key1', value1, ..., 'keyN', valueN)`
 
 ## Input Parameters
-- `dat` (struct): Identification dataset containing input, output, sampling time, and optional metadata.
+- `dat` (struct): iddata set containing input, output, sampling time, and optional metadata.
 - `y` (Real matrix or cell): Output signal(s).
 - `u` (Real matrix or cell ): Input signal(s).
-- `tsam` (Real scalar or celL): Sampling time
+- `tsam` (Real scalar or cell): Sampling time
 - `key` (String): Optional metadata key such as `'expname'`, `'inname'`, etc.
-- `value`: Corresponding value for the metadata key.
+- `value` (Real/Complex scalar/vector/matrix or String or Cell): Corresponding value for the metadata key.
 
 ## Optional Key–Value Pairs
 - `'expname'` (Cell of strings): Names of the experiments, e.g., `{'exp1', 'exp2', ...}`.
