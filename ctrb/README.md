@@ -11,6 +11,7 @@ Return controllability matrix.
 - `co = ctrb (a, b)`
 
 ## Parameters
+- `co` (Real matrix): Controllability matrix.
 - `sys` (State-space): LTI model.
 - `a` (Real matrix): State matrix (n-by-n).
 - `b` (Real matrix): Input matrix (n-by-m).
