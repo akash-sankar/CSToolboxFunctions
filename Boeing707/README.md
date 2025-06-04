@@ -13,7 +13,7 @@ Reference:
 - R. Brockhaus: Flugregelung (Flight Control), Springer, 1994.
 
 ## Parameters
-- `p` (Complex vector): Discrete-time poles.
+- `outsys` (State-space): Linearized state-space model of a Boeing 707-321 aircraft.
 
 ## Examples
 1.
