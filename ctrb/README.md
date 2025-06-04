@@ -15,9 +15,6 @@ Return controllability matrix.
 - `a` (Real matrix): State matrix (n-by-n).
 - `b` (Real matrix): Input matrix (n-by-m).
 
-## Dependecies
-ss2ss
-
 ## Examples
 1.
 ```
