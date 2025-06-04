@@ -9,7 +9,7 @@ Return dimensions of iddata set dat.
 - `[val1, val2, …] = get (dat, 'key1', 'key2', …)`
 
 ## Parameters
-- `val`: Key values of iddata objects.
+- `value, val1, val2, ...` (Scalar/Vector/Matrix/String): Key values of iddata objects.
 - `dat` (Structure): iddata set.
 - `key` (String): Key of the required value.
 
