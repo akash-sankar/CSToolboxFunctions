@@ -10,9 +10,6 @@ Sorts the input vector discrete-time poles, `p`, by magnitude (in decreasing ord
 ## Parameters
 - `p` (Complex vector): Discrete-time poles.
 
-## Dependencies
-gsort
-
 ## Examples
 1.
 ```
