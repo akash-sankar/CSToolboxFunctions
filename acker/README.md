@@ -20,7 +20,7 @@ has the eigenvalues given in p.
 - `P` (Real vector):Desired Poles.
 
 ## Dependecies
-ctrb
+[ctrb](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/ctrb)
 
 ## Examples
 1.
