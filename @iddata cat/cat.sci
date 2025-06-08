@@ -93,10 +93,21 @@ function dat = cat_iddata(dim, varargin)
         y = list(); u = list();
         tsam = list(); expname = list();
         for i = 1:n_args
-            y = y + tmp(i).y;
-            u = u + tmp(i).u;
-            tsam = tsam + tmp(i).tsam;
-            expname = expname + tmp(i).expname;
+            for j = 1:length(tmp(i).y)
+                if type(tmp(i).y(j)) == 15 then
+                    y = tmp(i).y(j)(1);
+                else
+                    y = tmp(i).y(j);
+                end
+                
+                if type(tmp(i).u(j)) == 15 then
+                    u = tmp(i).u(j)(1);
+                else
+                    u = tmp(i).u(j);
+                end
+                tsam($+1) = tmp(i).tsam(j);
+                expname($+1) = tmp(i).expname(j);
+             end
         end
 
         dat = iddata(y, u, tsam);
@@ -143,7 +154,7 @@ function [p, m] = get_output_input_sizes(tmp)
         else
             u = tmp(i).u(1);
         end
-
+        
         p($+1) = size(y, 2);
         m($+1) = size(u, 2);
     end
