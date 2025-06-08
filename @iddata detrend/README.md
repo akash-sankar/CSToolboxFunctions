@@ -14,6 +14,9 @@ Detrend outputs and inputs of dataset dat by removing the best fit of a polynomi
   - `ord = 0 (or) "constant"`
   - `ord = 1 (or) "linear"`
 
+## Dependencies
+[@iddata/size](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20size)
+
 ## Examples
 1.
 ```
