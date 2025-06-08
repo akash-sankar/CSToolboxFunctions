@@ -27,16 +27,16 @@ function [x, p, m, e] = size_iddata(dat, dim)
   end
 
   ylist = dat.y;
-  e = size(ylist); // number of experiments
+  e = length(ylist); // number of experiments
   n = zeros(1, e);   // number of samples
 
   for k = 1:e
-    ymat = ylist(k); // each experiment
-    n(k) = size(ymat, 1);
+    ymat = ylist(k)(1);
+    n(k) = size(ymat, 'r');
   end
 
-  p = size(dat.outname); // number of outputs
-  m = size(dat.inname);  // number of inputs
+  p = length(dat.outname); // number of outputs
+  m = length(dat.inname);  // number of inputs
 
   select dim
     case 0 then
@@ -46,7 +46,8 @@ function [x, p, m, e] = size_iddata(dat, dim)
           if p <> 1 then stry = "s"; end
           if m <> 1 then stru = "s"; end
           if e <> 1 then stre = "s"; end
-          msprintf("IDDATA set with [%s] samples, %d output%s, %d input%s and %d experiment%s.", strcat(string(n), " "), p, stry, m, stru, e, stre);
+          mprintf("IDDATA set with [%s] samples, %d output%s, %d input%s and %d experiment%s.\n", ...
+                  strcat(string(n), " "), p, stry, m, stru, e, stre);
         case 1 then
           x = [sum(n), p, m, e];
         case 2 then
@@ -71,4 +72,3 @@ function [x, p, m, e] = size_iddata(dat, dim)
       error("Invalid dimension.");
   end
 endfunction
-
