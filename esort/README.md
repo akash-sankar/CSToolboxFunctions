@@ -12,9 +12,6 @@ Sort continuous-time poles, `p`, by real part (in decreasing order).
 - `ndx` (Real vector): Index values.
 - `p` (Real/Complex vector): Continuous-time poles.
 
-## Dependencies
-gsort
-
 ## Examples
 1.
 ```
