@@ -132,8 +132,18 @@ endfunction
 function [p, m] = get_output_input_sizes(tmp)
     p = list(); m = list();
     for i = 1:length(tmp)
-        y = tmp(i).y(1);
-        u = tmp(i).u(1);
+        if type(tmp(i).y(1)) == 15 then
+            y = tmp(i).y(1)(1);
+        else
+            y = tmp(i).y(1);
+        end
+        
+         if type(tmp(i).u(1)) == 15 then
+            u = tmp(i).u(1)(1);
+        else
+            u = tmp(i).u(1);
+        end
+
         p($+1) = size(y, 2);
         m($+1) = size(u, 2);
     end
