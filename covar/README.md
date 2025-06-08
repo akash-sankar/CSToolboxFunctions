@@ -9,14 +9,10 @@ The function computes the output covariance `p` and the state covariance `q` ass
 - `[p, q] = covar(sys, w)`
 
 ## Parameters
-- `sys`: LTI model in state-space form.
-- `w`: Intensity (scalar or matrix) of the Gaussian white noise inputs which drive the system.
-
-## Returns
 - `p`: Output covariance matrix.
 - `q`: State covariance matrix.
-
-## Examples
+- `sys`: LTI model in state-space form.
+- `w`: Intensity (scalar or matrix) of the Gaussian white noise inputs which drive the system.
 
 ## Examples
 1.
