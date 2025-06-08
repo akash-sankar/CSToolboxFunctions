@@ -44,7 +44,7 @@ function dat = iddata(y, u, tsam, varargin)
         error("Wrong number of input arguments");
     end
 
-    if argn(2) == 1 & typeof(y) == "iddata" then
+    if argn(2) == 1 & typeof(y) == "st" & y.type == "iddata" then
         dat = y;
         return
     end
@@ -56,36 +56,66 @@ function dat = iddata(y, u, tsam, varargin)
         tsam = list();
     end
 
+    // Convert cell (ce) to list of experiments
+    if typeof(y) == "ce" then
+        tmp = list();
+        for i = 1:size(y, "*")
+            if typeof(y{i}) <> "ce" & typeof(y{i}) <> "list" then
+                tmp(i) = list(y{i});
+            else
+                tmp(i) = y{i};
+            end
+        end
+        y = tmp;
+    end
+
+    if typeof(u) == "ce" then
+        tmp = list();
+        for i = 1:size(u, "*")
+            if typeof(u{i}) <> "ce" & typeof(u{i}) <> "list" then
+                tmp(i) = list(u{i});
+            else
+                tmp(i) = u{i};
+            end
+        end
+        u = tmp;
+    end
+
     [y, u] = __adjust_iddata__(y, u);
     [p, m, e] = __iddata_dim__(y, u);
     tsam = __adjust_iddata_tsam__(tsam, e);
 
     outname = list();
+    for i = 1:p, outname($+1) = ""; end
+    outunit = list();
+    for i = 1:p, outunit($+1) = ""; end
     inname = list();
+    for i = 1:m, inname($+1) = ""; end
+    inunit = list();
+    for i = 1:m, inunit($+1) = ""; end
+
+
     expname = list();
-    for i = 1:p
-        outname($+1) = "";
-    end
-    for i = 1:m
-        inname($+1) = "";
-    end
     for i = 1:e
         expname($+1) = "";
     end
 
-    dat = struct("y", y, "outname", outname, "outunit", outname, "u", u, "inname", inname, "inunit", inname, "tsam", tsam, "timeunit", "", "timedomain", %t, "w", list(), "expname", expname, "name", "", "notes", list(), "userdata", [], "type", "iddata");
-    
+    dat = struct("y", y, "outname", outname, "outunit", outunit, ...
+                 "u", u, "inname", inname, "inunit", inunit, ...
+                 "tsam", tsam, "timeunit", "", "timedomain", %t, ...
+                 "w", list(), "expname", expname, "name", "", ...
+                 "notes", list(), "userdata", [], "type", "iddata");
+
+    // Optional arguments
     if argn(2) > 3 then
         for i = 1:2:length(varargin)
             key = varargin(i);
             value = varargin(i + 1);
-            
             if or(key == ["outname", "inname", "expname", "outunit", "inunit"]) then
                 if typeof(value) == "string" then
                     value = list(value);
                 end
             end
-            
             dat(string(key)) = value;
         end
     end
@@ -104,7 +134,6 @@ endfunction
 
 function [p, m, e] = __iddata_dim__(y, u)
     e = length(y);
-
     pList = list(); mList = list();
     if isempty(u) then
         for i = 1:e
@@ -154,6 +183,14 @@ function [p, m] = __experiment_dim__(y, u)
     else
         m = 0;
     end
+    
+    if ly < p then
+        warning("iddata: more outputs than samples - matrix ""y"" should probably be transposed");
+    end
+    if ~isempty(u) & lu < m then
+        warning("iddata: more inputs than samples - matrix ""u"" should probably be transposed");
+    end
+
 endfunction
 
 function tsam = __adjust_iddata_tsam__(tsam, e)
