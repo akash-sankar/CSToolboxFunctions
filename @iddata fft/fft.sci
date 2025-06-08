@@ -18,7 +18,7 @@ function dat = fft_iddata(dat, n)
     if argn(2) > 2 then
         error("Usage: dat = fft(dat)\n       dat = fft(dat, n)");
     end
-    
+
     if argn(2) == 1 then
         n = [];
     end
@@ -54,14 +54,38 @@ function dat = fft_iddata(dat, n)
 
     for i = 1:e
         ni = nlist(i);
-        y = dat.y(i)(1);
-        u = dat.u(i)(1);
 
-        fy = fft(y, -1, 1);
+        if type(dat.y(i)) == 15 then
+            y = dat.y(i)(1);
+        else
+            y = dat.y(i);
+        end
+
+        if type(dat.u(i)) == 15 then
+            u = dat.u(i)(1);
+        else
+            u = dat.u(i);
+        end
+
+        ny = size(y, 1);
+        if ny < ni then
+            y_pad = [y; zeros(ni - ny, size(y, 2))];
+        else
+            y_pad = y(1:ni, :);
+        end
+
+        fy = fft(y_pad, -1, 1);
         fy = fy(1:int(ni/2)+1, :) / sqrt(ni);
         dat.y(i) = list(fy); 
 
-        fu = fft(u, -1, 1);
+        nu = size(u, 1);
+        if nu < ni then
+            u_pad = [u; zeros(ni - nu, size(u, 2))];
+        else
+            u_pad = u(1:ni, :);
+        end
+
+        fu = fft(u_pad, -1, 1);
         fu = fu(1:int(ni/2)+1, :) / sqrt(ni);
         dat.u(i) = list(fu);
 
@@ -70,4 +94,5 @@ function dat = fft_iddata(dat, n)
     end
 
     dat.timedomain = %f;
+
 endfunction
