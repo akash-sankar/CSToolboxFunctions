@@ -35,7 +35,7 @@ function [x, p, m, e] = size_iddata(dat, dim)
         ymat = ylist(k)(1);
     else
         ymat = ylist(k);
-    endymat = ylist(k)(1);
+    end
     n(k) = size(ymat, 'r');
   end
 
