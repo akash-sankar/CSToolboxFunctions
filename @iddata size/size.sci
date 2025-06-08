@@ -31,7 +31,11 @@ function [x, p, m, e] = size_iddata(dat, dim)
   n = zeros(1, e);   // number of samples
 
   for k = 1:e
-    ymat = ylist(k)(1);
+    if type(ylist(k)) == 15 then
+        ymat = ylist(k)(1);
+    else
+        ymat = ylist(k);
+    endymat = ylist(k)(1);
     n(k) = size(ymat, 'r');
   end
 
