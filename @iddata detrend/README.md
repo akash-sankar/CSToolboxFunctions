@@ -3,6 +3,8 @@
 ## Description
 Detrend outputs and inputs of dataset dat by removing the best fit of a polynomial of order ord. If ord is not specified, default value 0 is taken. This corresponds to removing a constant.
 
+It was observed that while the inbuilt detrend function performs well for larger values, discrepancies arise when dealing with values closer to zero. 
+
 ## Calling Sequence
 - `datout = detrend (dat)`
 - `datout = detrend (dat, ord)`
