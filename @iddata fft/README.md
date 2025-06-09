@@ -1,4 +1,4 @@
-# @iddata/cat
+# @iddata/fft
 
 ## Description
 Concatenate iddata sets along dimension dim.
