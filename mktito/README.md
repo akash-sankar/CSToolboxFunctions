@@ -2,7 +2,7 @@
 
 ## Description
 Partition LTI plant P for robust controller synthesis. If a plant is partitioned this way, one can omit the inputs nmeas and ncon when calling the functions hinfsyn and h2syn.
-
+```
  min||N(K)||             N = lft (P, K)
   K         norm
 
@@ -19,7 +19,7 @@ Partition LTI plant P for robust controller synthesis. If a plant is partitioned
                 +--------+      
    w = u1 ----->|  N(s)  |-----> z = y1
                 +--------+
-
+```
 Reference: [1] Skogestad, S. and Postlethwaite, I. (2005) Multivariable Feedback Control: Analysis and Design: Second Edition. Wiley, Chichester, England.
 
 ## Calling Sequence
