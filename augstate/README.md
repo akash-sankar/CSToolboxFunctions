@@ -15,9 +15,6 @@ Append state vector x of system sys to output vector y.
 - `augsys` (State-space/Transfer function): Output system.
 - `sys` (State-space/Transfer function): Input system.
 
-## Dependencies
-[@lti/size](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40lti%20size)
-
 ## Examples
 1.
 ```
