@@ -1,7 +1,7 @@
 # @iddata/fft
 
 ## Description
-Concatenate iddata sets along dimension dim.
+Transform iddata objects from time to frequency domain using a Fast Fourier Transform (FFT) algorithm.
 
 ## Calling Sequence
 - `dat_fft = fft (dat)`
