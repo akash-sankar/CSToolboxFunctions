@@ -1,4 +1,37 @@
-function [P, P_sys] = mktito(P, nmeas, ncon)
+/*2025 Author: Akash S <akash.ktsn@gmail.com>*/
+/*
+Calling Sequence:
+        P_out = mktito (P, nmeas, ncon)
+Parameters:
+        P_out (State-space/Transfer function): Partitioned plant. The input/output groups and names are overwritten with designations according to [1].
+        P (State-space/Transfer function): Generalized plant.
+        nmeas (Real scalar): Number of measured outputs v. The last nmeas outputs of P are connected to the inputs of controller K. The remaining outputs z (indices 1 to p-nmeas) are used to calculate the H-2/H-infinity norm.
+        ncon (Real scalar): Number of controlled inputs u. The last ncon inputs of P are connected to the outputs of controller K. The remaining inputs w (indices 1 to m-ncon) are excited by a harmonic test signal.
+Description:
+        Partition LTI plant P for robust controller synthesis. If a plant is partitioned this way, one can omit the inputs nmeas and ncon when calling the functions hinfsyn and h2syn.
+
+             min||N(K)||             N = lft (P, K)
+              K         norm
+            
+                            +--------+  
+               w = u1 ----->|        |-----> z = y1
+                            |  P(s)  |
+               u = u2 +---->|        |-----+ y = y2
+                      |     +--------+     |
+                      |                    |
+                      |     +--------+     |
+                      +-----|  K(s)  |<----+
+                            +--------+
+            
+                            +--------+      
+               w = u1 ----->|  N(s)  |-----> z = y1
+                            +--------+
+
+        Reference: [1] Skogestad, S. and Postlethwaite, I. (2005) Multivariable Feedback Control: Analysis and Design: Second Edition. Wiley, Chichester, England.
+
+        NOTE: LTI system in Scilab cannot store outgroup, ingroup, inname and outname. So a separate structure, P_inout, is used to store those fields.
+*/
+function [P, P_inout] = mktito(P, nmeas, ncon)
 
     if argn(2) <> 3 then
         error("Usage: P = mktito(P, nmeas, ncon)");
@@ -6,6 +39,10 @@ function [P, P_sys] = mktito(P, nmeas, ncon)
 
     if typeof(P) <> "state-space" then
         error("mktito: first argument must be an LTI system");
+    end
+    
+    if typeof(P) <> "rational" then
+        P = tf2ss(P);
     end
 
     [p, m] = size_lti(P);
@@ -36,11 +73,11 @@ function [P, P_sys] = mktito(P, nmeas, ncon)
         inname($+1) = "u" + string(i);
     end
 
-    P_sys = struct();
-    P_sys.outgroup = outgroup;
-    P_sys.ingroup = ingroup;
-    P_sys.outname = outname;
-    P_sys.inname = inname;
+    P_inout = struct();
+    P_inout.outgroup = outgroup;
+    P_inout.ingroup = ingroup;
+    P_inout.outname = outname;
+    P_inout.inname = inname;
 
 endfunction
 
