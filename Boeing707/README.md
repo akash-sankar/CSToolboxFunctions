@@ -7,11 +7,11 @@ Creates a linearized state-space model of a Boeing 707-321 aircraft at
 System inputs: Thrust, Elevator angle.
 System outputs: Airspeed, Pitch angle
 
-## Calling Sequence
-- `outsys = Boeing707()`
-
 Reference: 
 - R. Brockhaus: Flugregelung (Flight Control), Springer, 1994.
+
+## Calling Sequence
+- `outsys = Boeing707()`
 
 ## Parameters
 - `outsys` (State-space): Linearized state-space model of a Boeing 707-321 aircraft.
