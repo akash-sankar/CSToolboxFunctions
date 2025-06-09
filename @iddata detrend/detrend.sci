@@ -48,9 +48,8 @@ function dat = detrend_iddata(dat, ord)
         yk = dat.y(k);
         uk = dat.u(k);
 
-        // Convert to matrix if stored as list element
         if type(yk) == 15 then
-            yk = yk(1); // unpack list
+            yk = yk(1);
         end
         if type(uk) == 15 then
             uk = uk(1);
@@ -59,7 +58,7 @@ function dat = detrend_iddata(dat, ord)
         if size(yk, 1) > 1 then
             dat.y(k) = list(detrend(yk, flag));
         else
-            dat.y(k) = list(zeros(1, p)); // n == 1 → special handling
+            dat.y(k) = list(zeros(1, p));
         end
 
         if size(uk, 1) > 1 then
