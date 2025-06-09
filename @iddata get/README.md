@@ -1,7 +1,7 @@
 # @iddata/get
 
 ## Description
-Return dimensions of iddata set dat.
+Access key values of iddata objects. Type get(dat) to display a list of available keys.
 
 ## Calling Sequence
 - `get (dat)`
