@@ -2,12 +2,12 @@
 
 ## Description
 Append state vector x of system sys to output vector y.
-
+```
  .                  .
  x = A x + B u      x = A x + B u
  y = C x + D u  =>  y = C x + D u
                     x = I x + O u
-                    
+```                 
 ## Calling Sequence
 - `augsys = augstate (sys)`
 
