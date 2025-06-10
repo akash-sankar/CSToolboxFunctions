@@ -4,7 +4,7 @@
 Concatenate iddata sets along dimension dim.
 
 ## Calling Sequence
-- `dat = cat (dim, dat1, dat2, …)`
+- `dat = cat_iddata (dim, dat1, dat2, …)`
 
 ## Parameters
 - `dat` (Structure): Concatenated iddata set.
