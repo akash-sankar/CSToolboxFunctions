@@ -1,7 +1,7 @@
 /*2025 Author: Akash S <akash.ktsn@gmail.com>*/
 /*
 Calling Sequence:
-    dat = cat (dim, dat1, dat2, …)
+    dat = cat_iddata (dim, dat1, dat2, …)
 Parameters:
     dat (Structure): Concatenated iddata set.
     dim (Real scalar): Dimension along which the concatenation takes place
