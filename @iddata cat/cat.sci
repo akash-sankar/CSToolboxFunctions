@@ -16,109 +16,98 @@ Description:
     Concatenate iddata sets along dimension dim.
 */
 function dat = cat_iddata(dim, varargin)
-    if type(dim) <> 1 | size(dim, "*") <> 1 then
-        error("iddata: cat: dim must be a scalar");
+
+  if type(dim) <> 1 | size(dim, '*') <> 1 then
+    error("iddata: cat: dim must be a scalar");
+  end
+
+  tmp = varargin;
+  n_args = length(tmp);
+
+  n = list(); p = list(); m = list(); e = list();
+  for i = 1:n_args
+    n($+1) = size(tmp(i).y(1), 1);
+    p($+1) = size(tmp(i).y(1), 2);
+    m($+1) = size(tmp(i).u(1), 2);
+    e($+1) = length(tmp(i).y);
+  end
+
+  tsam = tmp(1).tsam;
+  expname = tmp(1).expname;
+  outname = tmp(1).outname;
+  outunit = tmp(1).outunit;
+  inname = tmp(1).inname;
+  inunit = tmp(1).inunit;
+
+  check_domain(tmp);
+
+  select dim
+  case 1 then
+    check_experiments(tmp, e);
+    check_outputs(tmp, p);
+    check_inputs(tmp, m);
+
+    y = list(); u = list();
+    for j = 1:e(1)
+      yj = tmp(1).y(j);
+      uj = tmp(1).u(j);
+      for i = 2:n_args
+        yj = [yj; tmp(i).y(j)];
+        uj = [uj; tmp(i).u(j)];
+      end
+      y(j) = yj;
+      u(j) = uj;
     end
 
-    tmp = varargin;
-    n_args = length(tmp);
+  case 2 then
+    check_experiments(tmp, e);
+    check_samples(n);
 
-    e = list();
+    y = list(); u = list();
+    for j = 1:e(1)
+      yj = tmp(1).y(j);
+      uj = tmp(1).u(j);
+      for i = 2:n_args
+        yj = [yj, tmp(i).y(j)];
+        uj = [uj, tmp(i).u(j)];
+      end
+      y(j) = yj;
+      u(j) = uj;
+    end
+
+    outname = list(); outunit = list(); inname = list(); inunit = list();
     for i = 1:n_args
-        e($+1) = length(tmp(i).y);
+      outname($+1) = tmp(i).outname(1);
+      outunit($+1) = tmp(i).outunit(1);
+      inname($+1) = tmp(i).inname(1);
+      inunit($+1) = tmp(i).inunit(1);
     end
 
-    check_domain(tmp);
+  case 3 then
+    check_outputs(tmp, p);
+    check_inputs(tmp, m);
 
-    select dim
-    case 1 then
-        check_experiments(e);
-        [p, m] = get_output_input_sizes(tmp);
-        check_outputs(tmp, p);
-        check_inputs(tmp, m);
-
-        ycat = tmp(1).y(1);
-        ucat = tmp(1).u(1);
-        for i = 2:n_args
-            ycat = [ycat; tmp(i).y(1)];
-            ucat = [ucat; tmp(i).u(1)];
-        end
-        y = list(ycat); u = list(ucat);
-
-        dat = iddata(y, u, tmp(1).tsam(1));
-        dat.expname = tmp(1).expname;
-        dat.outname = tmp(1).outname;
-        dat.outunit = tmp(1).outunit;
-        dat.inname = tmp(1).inname;
-        dat.inunit = tmp(1).inunit;
-        dat.timedomain = tmp(1).timedomain;
-
-    case 2 then
-        check_experiments(e);
-        check_samples(tmp);
-        [p, m] = get_output_input_sizes(tmp);
-
-        ycat = tmp(1).y(1);
-        ucat = tmp(1).u(1);
-        for i = 2:n_args
-            ycat = [ycat, tmp(i).y(1)];
-            ucat = [ucat, tmp(i).u(1)];
-        end
-        y = list(ycat); u = list(ucat);
-
-        outname = list(); outunit = list();
-        inname = list(); inunit = list();
-        for i = 1:n_args
-            outname($+1) = tmp(i).outname(1);
-            outunit($+1) = tmp(i).outunit(1);
-            inname($+1) = tmp(i).inname(1);
-            inunit($+1) = tmp(i).inunit(1);
-        end
-
-        dat = iddata(y, u, tmp(1).tsam(1));
-        dat.expname = tmp(1).expname;
-        dat.outname = outname;
-        dat.outunit = outunit;
-        dat.inname = inname;
-        dat.inunit = inunit;
-        dat.timedomain = tmp(1).timedomain;
-
-    case 3 then
-        [p, m] = get_output_input_sizes(tmp);
-        check_outputs(tmp, p);
-        check_inputs(tmp, m);
-
-        y = list(); u = list();
-        tsam = list(); expname = list();
-        for i = 1:n_args
-            for j = 1:length(tmp(i).y)
-                if type(tmp(i).y(j)) == 15 then
-                    y = tmp(i).y(j)(1);
-                else
-                    y = tmp(i).y(j);
-                end
-                
-                if type(tmp(i).u(j)) == 15 then
-                    u = tmp(i).u(j)(1);
-                else
-                    u = tmp(i).u(j);
-                end
-                tsam($+1) = tmp(i).tsam(j);
-                expname($+1) = tmp(i).expname(j);
-             end
-        end
-
-        dat = iddata(y, u, tsam);
-        dat.expname = expname;
-        dat.outname = tmp(1).outname;
-        dat.outunit = tmp(1).outunit;
-        dat.inname = tmp(1).inname;
-        dat.inunit = tmp(1).inunit;
-        dat.timedomain = tmp(1).timedomain;
-
-    else
-        error(msprintf("iddata: cat: ""%d"" is an invalid dimension", dim));
+    y = list(); u = list();
+    tsam = list(); expname = list();
+    for i = 1:n_args
+      for j = 1:length(tmp(i).y)
+        y($+1) = tmp(i).y(j);
+        u($+1) = tmp(i).u(j);
+        tsam($+1) = tmp(i).tsam(j);
+        expname($+1) = tmp(i).expname(j);
+      end
     end
+
+  else
+    error(msprintf("iddata: cat: '%d' is an invalid dimension", dim));
+  end
+
+  dat = iddata(y, u, tsam);
+  dat.expname = expname;
+  dat.outname = outname;
+  dat.outunit = outunit;
+  dat.inname = inname;
+  dat.inunit = inunit;
 endfunction
 
 function check_domain(tmp)
