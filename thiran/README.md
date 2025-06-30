@@ -13,6 +13,9 @@ Thiran filters can approximate continuous-time delays that are non-integer multi
 - `tau` (Real scalar): A continuous-time delay, given in time units (seconds).
 - `tsam` (Real scalar): The sampling time of the resulting Thiran filter.
 
+## Deendencies
+issample
+
 ## Examples
 1.
 ```
@@ -76,3 +79,21 @@ at line     5 of function thiran ( C:\Users\KARTHIK\Desktop\Scilab\thiran.sci li
 
 Usage: sys = thiran (tau, tsam)
 ```
+
+# issample
+
+## Description
+Return true if `ts` is a valid sampling time.
+
+## Calling Sequence
+- `bool = issample(ts)`
+- `bool = issample(ts, flag)`
+
+## Parameters
+- `bool` (Boolean): True if conditions are met and false otherwise.
+- `ts` (Real scalar): Alleged sampling time to be tested.
+- `flag` (Real scalar): Flag
+ - flg = 1: Accept real scalars ts > 0.  Default Value.
+ - flg = 0: Accept real scalars ts >= 0.
+ - flg = -1: Accept real scalars ts > 0 and ts == -1.
+ - flg = -10: Accept real scalars ts >= 0 and ts == -1.
