@@ -14,8 +14,7 @@ Create options struct opt from a number of key and value pairs. For use with ord
 ## Examples
 1.
 ```
-opt = options("color", "blue", "size", 10);
-disp(opt);
+opt = options("color", "blue", "size", 10)
 ```
 ```
   [struct] with fields:
@@ -25,7 +24,7 @@ disp(opt);
 ```
 2.
 ```
-opt = options();
+opt = options()
 ```
 ```
 "Usage: options(key1, value1, key2, value2, ...)"
@@ -33,7 +32,7 @@ opt = options();
 
 3.
 ```
-opt = options("color", "red", "size");
+opt = options("color", "red", "size")
 ```
 ```
 Error: Properties and values must come in pairs
@@ -41,7 +40,7 @@ Error: Properties and values must come in pairs
 
 4.
 ```
-opt = options("width", 5.5, "enabled", %t, "name", "sensorA");
+opt = options("width", 5.5, "enabled", %t, "name", "sensorA")
 ```
 ```
   [struct] with fields:
@@ -53,7 +52,7 @@ opt = options("width", 5.5, "enabled", %t, "name", "sensorA");
 ```
 5.
 ```
-opt = options("mode", "auto", "mode", "manual");
+opt = options("mode", "auto", "mode", "manual")
 ```
 ```
   [struct] with fields:
