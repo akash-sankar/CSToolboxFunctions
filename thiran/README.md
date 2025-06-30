@@ -93,7 +93,7 @@ Return true if `ts` is a valid sampling time.
 - `bool` (Boolean): True if conditions are met and false otherwise.
 - `ts` (Real scalar): Alleged sampling time to be tested.
 - `flag` (Real scalar): Flag
- - flg = 1: Accept real scalars ts > 0.  Default Value.
- - flg = 0: Accept real scalars ts >= 0.
- - flg = -1: Accept real scalars ts > 0 and ts == -1.
- - flg = -10: Accept real scalars ts >= 0 and ts == -1.
+  - flg = 1: Accept real scalars ts > 0.  Default Value.
+  - flg = 0: Accept real scalars ts >= 0.
+  - flg = -1: Accept real scalars ts > 0 and ts == -1.
+  - flg = -10: Accept real scalars ts >= 0 and ts == -1.
