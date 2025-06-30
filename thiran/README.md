@@ -13,7 +13,7 @@ Thiran filters can approximate continuous-time delays that are non-integer multi
 - `tau` (Real scalar): A continuous-time delay, given in time units (seconds).
 - `tsam` (Real scalar): The sampling time of the resulting Thiran filter.
 
-## Deendencies
+## Dependencies
 [issample](https://github.com/akash-sankar/CSToolboxFunctions/blob/main/thiran/README.md#issample)
 
 ## Examples
