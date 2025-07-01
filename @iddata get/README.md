@@ -13,6 +13,9 @@ Access key values of iddata objects. Type get(dat) to display a list of availabl
 - `dat` (Structure): iddata set.
 - `key, key1, key2, ...` (String): Key of the required value.
 
+## Dependencies
+[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata)
+
 ## Examples
 1.
 ```
