@@ -36,7 +36,7 @@ s = [1x4 double]
 3.
 ```
 p = [-1 + %i, 2 - %i, 0.5, -3 - 0.2 * %i];
-s = esort(p)
+[s, ndx] = esort(p)
 ```
 ```
 s = [1x4 double]
