@@ -24,28 +24,28 @@ Generates periodic signal.
 [x,t]=gensig('sin',1,1);
 plot(t,x);
 ```
-![image](https://github.com/user-attachments/assets/8cc6d4ad-c194-4bb6-985a-2ea4acded40f)
+![1](https://github.com/user-attachments/assets/5ecdb8a1-1a9c-4bdf-85bb-fc9230018e1a)
   
 2.
 ```
 [x,t]=gensig('cos',3);
 plot(t,x);
 ```
-![image](https://github.com/user-attachments/assets/0f67c1fb-0775-4242-ba6c-171bea244358)
+![2](https://github.com/user-attachments/assets/e6f89cc1-dba4-45ae-9329-210ca9ca3692)
 
 3.
 ```
 [x,t]=gensig('square',3);
 plot(t,x);
 ```
-![image](https://github.com/user-attachments/assets/31538433-e134-4e9f-acf2-7d62e0f5cab7)
+![3](https://github.com/user-attachments/assets/999c118a-5989-4205-a2d0-265eea1767c6)
 
 4.
 ```
 [x,t]=gensig('pulse',3,2);
 plot(t,x);
 ```
-![image](https://github.com/user-attachments/assets/e09363f8-47ba-4e7e-b197-9beb9082854f)
+![4](https://github.com/user-attachments/assets/3e46a81c-a06c-42b4-b224-b006ffda82a4)
 
 5. 
 ```
