@@ -18,6 +18,9 @@ Return dimensions of iddata set dat.
 - `dat` (Structure): iddata set.
 - `dim` (Real scalar): If given a second argument, size will return the size of the corresponding dimension.
 
+## Dependencies
+[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata)
+
 ## Examples
 1.
 ```
