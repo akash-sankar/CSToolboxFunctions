@@ -36,7 +36,7 @@ s = [1x4 double]
 3.
 ```
 p = [0.5, 0.9, 0.3, 1.2];
-s = dsort(p)
+[s, ndx] = dsort(p)
 ```
 ```
 s = [1x4 double]
