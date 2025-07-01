@@ -27,15 +27,6 @@ function outsys = Boeing707()
 
     D = zeros(2, 2);
 
-    iname = ['thrust'; 'rudder'];
-    oname = ['speed'; 'pitch'];
-
     outsys = syslin("c", A, B, C, D);
-    
-    inam = {"thrust"; "rudder"};
-    onam = {"speed"; "pitch"};
-
-    outsys.in = iname;
-    outsys.out = oname;
 
 endfunction
