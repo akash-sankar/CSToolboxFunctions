@@ -4,7 +4,7 @@
 Vertical concatenation of iddata datasets. The samples are concatenated in the following way: dat.y{e} =  [dat1.y{e}; dat2.y{e}; …] dat.u{e} = [dat1.u{e}; dat2.u{e}; …] where e denotes the experiment. The number of experiments, outputs and inputs must be equal for all datasets.
 
 ## Calling Sequence
-- `dat = vertcat (dat1, dat2, …)`
+- `dat = vertcat_iddata(dat1, dat2, …)`
 
 ## Parameters
 - `dat` (Structure): A single iddata object with all the sample data from inputs vertically concatenated per experiment.
@@ -16,7 +16,7 @@ Vertical concatenation of iddata datasets. The samples are concatenated in the f
 ## Examples
 1.
 ```
-dat = vertcat(iddata (1, 1), iddata (2, 2))
+dat = vertcat_iddata(iddata (1, 1), iddata (2, 2))
 ```
 ```
  dat = [struct] with fields:
@@ -48,7 +48,7 @@ dat = vertcat(iddata (1, 1), iddata (2, 2))
 
 2.
 ```
-dat = vertcat(iddata (1, 1), iddata (2, 2), iddata(3, 3))
+dat = vertcat_iddata(iddata (1, 1), iddata (2, 2), iddata(3, 3))
 ```
 ```
  dat = [struct] with fields:
@@ -80,7 +80,7 @@ dat = vertcat(iddata (1, 1), iddata (2, 2), iddata(3, 3))
 
 3.
 ```
-dat = vertcat(iddata (1, 1), iddata ({2, 3}, {2, 3}))
+dat = vertcat_iddata(iddata (1, 1), iddata ({2, 3}, {2, 3}))
 ```
 ```
 at line     4 of function check_experiments ( C:\Users\KARTHIK\Desktop\Scilab\cat_iddata.sci line 112 )
@@ -92,7 +92,7 @@ iddata: cat: number of experiments do not match
 
 4.
 ```
-dat = vertcat()
+dat = vertcat_iddata()
 ```
 ```
 at line     2 of function check_domain ( C:\Users\KARTHIK\Desktop\Scilab\cat_iddata.sci line 101 )
