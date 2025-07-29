@@ -37,12 +37,12 @@ function [P, P_inout] = mktito(P, nmeas, ncon)
         error("Usage: P = mktito(P, nmeas, ncon)");
     end
 
+    if typeof(P) == "rational" then
+        P = tf2ss(P);
+    end
+
     if typeof(P) <> "state-space" then
         error("mktito: first argument must be an LTI system");
-    end
-    
-    if typeof(P) <> "rational" then
-        P = tf2ss(P);
     end
 
     [p, m] = size_lti(P);
