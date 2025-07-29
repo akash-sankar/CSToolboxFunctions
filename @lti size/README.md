@@ -23,8 +23,12 @@ sys = syslin('c', 1, [1 1], 1);
 size_lti(sys)
 ```
 ```
+ ans = [1x2 double]
 
+   1.   2.
 ```
+Even if the number of output variables are zero, the value of nargout (or) argn(1) is 1. So the output of test case 1 & 2 are same.
+
 2.
 ```
 a = syslin('c', 1, [1 1], 1);
@@ -38,18 +42,18 @@ nvec = size_lti(sys)
 
 3.
 ```
-a = syslin('c', 1, [1 1], 1);
+sys = syslin('d',[0 -0.6667; 1 -0.3333], [-0.3333; 0], [0 -1], 0);
 m = size_lti(sys, 2)
 ```
 ```
  m = 
 
-   2.
+   1.
 ```
 
 4.
 ```
-a = syslin('c', 1, [1 1], 1);
+sys = syslin('d',[0 -0.6667; 1 -0.3333], [-0.3333; 0], [0 -1], 0);
 [p, m] = size_lti(sys)
 ```
 ```
@@ -59,7 +63,7 @@ a = syslin('c', 1, [1 1], 1);
 
  m = 
 
-   2.
+   1.
 ```
 
 5.
