@@ -14,6 +14,9 @@ Concatenate iddata sets along dimension dim.
   - `dim = 3`: Concatenate experiments. The experiments are concatenated in the following way: dat.y = [dat1.y; dat2.y; …] dat.u = [dat1.u; dat2.u; …]. The number of outputs and inputs must be equal for all datasets. Equivalent to merge.
 - `dat1, dat2, …` (Structure): iddata sets to be concatenated.
 
+## Dependencies
+[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata)
+
 ## Examples
 1.
 ```
