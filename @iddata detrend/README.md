@@ -171,11 +171,9 @@ t = 0:20;
 Y = 3*sin(t) + t;
 U = 3*cos(t) + t;
 dat = iddata(Y',U');
-D = detrend_iddata(dat,'linear')
+DATD = detrend_iddata(dat,'linear')
 DATD.y(1)(1)
-DATD.y(2)(1)
 DATD.u(1)(1)
-DATD.u(2)(1)
 ```
 ```
  D = [struct] with fields:
@@ -206,7 +204,7 @@ DATD.u(2)(1)
   userdata = []
   type = "iddata"
 
- D.y(1)(1) = [21x1 double]
+ DATD.y(1)(1) = [21x1 double]
 
   -4.281748407313681337D-01
    2.124795285130889333D+00
@@ -230,7 +228,7 @@ DATD.u(2)(1)
    5.640430455902887275D-01
    2.881804340222881677D+00
 
- D.u(1)(1) = [21x1 double]
+ DATD.u(1)(1) = [21x1 double]
 
    2.965209432047589022D+00
    1.567600998348205987D+00
