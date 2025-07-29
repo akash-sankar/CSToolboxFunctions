@@ -13,7 +13,7 @@ Transform iddata objects from time to frequency domain using a Fast Fourier Tran
 - `dat` (Structure): iddata set containing signals in time-domain.
 
 ## Dependencies
-[@iddata/size](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20size)
+[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata), [@iddata/size](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20size)
 
 ## Examples
 1.
