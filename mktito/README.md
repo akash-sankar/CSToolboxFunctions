@@ -110,7 +110,7 @@ P = syslin("c", A, B, C, D);
 [P, P_inout] = mktito(P, 0, 2)
 ```
 ```
-at line    18 of function mktito ( C:\Users\KARTHIK\Desktop\Scilab\mktito.sci line 18 )
+at line    18 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 18 )
 
 mktito: second argument 'nmeas' invalid
 ```
@@ -125,7 +125,7 @@ P = syslin("c", A, B, C, D);
 [P, P_inout] = mktito(P, 1, 0)
 ```
 ```
-at line    22 of function mktito ( C:\Users\KARTHIK\Desktop\Scilab\mktito.sci line 22 )
+at line    22 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 22 )
 
 mktito: third argument 'ncon' invalid
 ```
@@ -140,7 +140,7 @@ P = syslin("c", A, B, C, D);
 [P, P_inout] = mktito(P)
 ```
 ```
-at line     4 of function mktito ( C:\Users\KARTHIK\Desktop\Scilab\mktito.sci line 4 )
+at line     4 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 4 )
 
 Usage: P = mktito(P, nmeas, ncon)
 ```
