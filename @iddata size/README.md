@@ -33,6 +33,7 @@ size_iddata(dat)
    6.   1.   1.   1.
 ```
 Even if the number of output variables are zero, the value of nargout (or) argn(1) is 1. So the output of test case 1 & 2 are same.
+
 2.
 ```
 dat = iddata((1:6)',(1:6)',-1,'outname','Output','inname','Input','expname','Experiment 1');
