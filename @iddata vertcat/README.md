@@ -11,7 +11,7 @@ Vertical concatenation of iddata datasets. The samples are concatenated in the f
 - `dat1, dat2, ...` (Structure): iddata objects with identical I/O dimensions and experiment structure.
 
 ## Dependencies
-[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata), [@iddata/cat](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20cat)
+[iddata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/iddata), [@iddata/cat](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20cat), [@iddata/size](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40iddata%20size)
 
 ## Examples
 1.
