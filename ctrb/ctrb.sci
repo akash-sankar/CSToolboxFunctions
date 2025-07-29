@@ -20,8 +20,7 @@ function co = ctrb(a, b)
     if typeof(a) <> 'state-space' then
       error("ctrb: argument must be an lti system");
     end
-    A = a.A;
-    B = a.B;
+    [A, B] = abcd (a); 
   end
   if nargin == 2 then
     [m, n] = size(a);
