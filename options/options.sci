@@ -11,7 +11,7 @@ Description:
 */
 function opt = options(varargin)
     if nargin == 0 then
-        disp("Usage: options(key1, value1, key2, value2, ...)");
+        error("Usage: options(key1, value1, key2, value2, ...)");
         return;
     end
 
