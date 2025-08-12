@@ -11,6 +11,10 @@ Reference:
         R. Brockhaus: Flugregelung (Flight Control), Springer, 1994.
 */
 function outsys = Boeing707()
+    
+    if nargin ~= 0 then 
+        error("Usage: outsys = Boeing707()");
+    end
 
     A = [-0.46E-01,            0.10681415316, 0.0,   -0.17121680433;
          -0.1675901504661613, -0.515,         1.0,    0.6420630320636088E-02;
@@ -29,4 +33,10 @@ function outsys = Boeing707()
 
     outsys = syslin("c", A, B, C, D);
 
+    mprintf("\nBoeing707.A = \n")
+    disp(A);
+    mprintf("\nBoeing707.B = \n")
+    disp(B);
+
 endfunction
+
