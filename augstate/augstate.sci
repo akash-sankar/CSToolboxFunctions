@@ -21,9 +21,9 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         [outn, ing, outg] = [[], [], []];
     elseif argn(2) == 4 then
         [ing, outg] = [[], []];
-    elseif argn(2) == 2 then
+    elseif argn(2) == 5 then
         outg = [];
-    else
+    elseif  argn(2) < 1 | argn(2) > 6 then
         error("Usage: [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg);")
     end
 
