@@ -13,8 +13,18 @@ Description:
                             x = I x + O u
 */
 function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
-    if argn(2) <> 1 then
-        error("augstate: Exactly one input argument expected.");
+    if argn(2) == 1 then
+        [inn, stn, outn, ing, outg] = [[], [], [], [], []];
+    elseif argn(2) == 2 then
+        [stn, outn, ing, outg] = [[], [], [], []];
+    elseif argn(2) == 3 then
+        [outn, ing, outg] = [[], [], []];
+    elseif argn(2) == 4 then
+        [ing, outg] = [[], []];
+    elseif argn(2) == 2 then
+        outg = [];
+    else
+        error("Usage: [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg);")
     end
 
     if typeof(sys) <> "state-space" & typeof(sys) == 'rational' then
