@@ -12,7 +12,7 @@ Description:
          y = C x + D u  =>  y = C x + D u
                             x = I x + O u
 */
-function augsys = augstate(sys)
+function augsys = augstate(sys, inn, stn, outn, ing, outg)
     if argn(2) <> 1 then
         error("augstate: Exactly one input argument expected.");
     end
@@ -30,4 +30,10 @@ function augsys = augstate(sys)
     D_aug = [D; zeros(n, m)];
 
     augsys = syslin(sys("dt"), A, B, C_aug, D_aug);
+    
+    augsysn.inname = inn;
+    augsysn.stname = stn;
+    augsysn.outname = outn;
+    augsysn.ingroup = ing;
+    augsysn.outgroup = outg;
 endfunction
