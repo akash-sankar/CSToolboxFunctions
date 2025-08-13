@@ -12,11 +12,13 @@ Append state vector x of system sys to output vector y.
 NOTE: tf2ss function of GNU Octave uses Wolovich’s Observable Structure Theorem while Scilab uses a different approach (h=C*(s*eye()-A)^-1*B+D(s)). So when a transfer function is given as input, the resultant state space representation may not match between GNU Octave & Scilab. But both forms produce identical input-output behavior.
 
 ## Calling Sequence
-- `augsys = augstate (sys)`
+- `[augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)`
 
 ## Parameters
 - `augsys` (State-space/Transfer function): Output system.
+- `augsysn` (Structure): Output system information.
 - `sys` (State-space/Transfer function): Input system.
+- `inn`, `stn`, `outn`, `ing`, `outg` (Vectors): Input variable names, State variable names, Output variable names, Input grouping information and Output grouping information.
 
 ## Examples
 1.
