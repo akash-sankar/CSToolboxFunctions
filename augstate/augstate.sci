@@ -4,7 +4,9 @@ Calling Sequence:
     augsys = augstate (sys)
 Parameters:
     augsys (State-space/Transfer function): Output system.
+    augsysn (Structure): Output system information.
     sys (State-space/Transfer function): Input system.
+    inn, stn, outn, ing, outg (Vector): Input variable names, State variable names, Output variable names, Input grouping information and Output grouping information.
 Description:
     Append state vector x of system sys to output vector y.
          .                  .
