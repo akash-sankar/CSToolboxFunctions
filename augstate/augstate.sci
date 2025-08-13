@@ -12,7 +12,7 @@ Description:
          y = C x + D u  =>  y = C x + D u
                             x = I x + O u
 */
-function augsys = augstate(sys, inn, stn, outn, ing, outg)
+function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
     if argn(2) <> 1 then
         error("augstate: Exactly one input argument expected.");
     end
