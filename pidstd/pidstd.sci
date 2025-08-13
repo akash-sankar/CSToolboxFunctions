@@ -33,7 +33,7 @@ function C = pidstd(Kp, Ti, Td, N)
     end
     
     if ~isreal(Kp) | ~isscalar(Kp) | ~isreal(Ti) | ~isscalar(Ti) | ~isreal(Td) | ~isscalar(Td) | ~isreal(N) | ~isscalar(N) then
-        disp("Error: Inputs must be real scalars.");
+        error("Error: Inputs must be real scalars.");
         return;
     end
 
