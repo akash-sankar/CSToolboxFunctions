@@ -76,7 +76,7 @@ C = [1 0; 0 1; 1 1];
 D = zeros(3,4);
 P = syslin("c", A, B, C, D);
 P = ss2tf(P);
-[P, P_inout]=mktito(SYS,1,2)
+[P, P_inout]=mktito(P,1,2)
 ```
 ```
  P = [3x4 state-space]
