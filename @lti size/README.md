@@ -31,24 +31,26 @@ Even if the number of output variables are zero, the value of nargout (or) argn(
 
 2.
 ```
-a = syslin('c', 1, [1 1], 1);
+A=[0 1;-2 -3];B=[0;1];C=[1 0;0 1];D=[0;0];
+sys=syslin("c",A,B,C,D);
 nvec = size_lti(sys)
 ```
 ```
  nvec = [1x2 double]
 
-   1.   2.
+   2.   1.
 ```
 
 3.
 ```
-sys = syslin('d',[0 -0.6667; 1 -0.3333], [-0.3333; 0], [0 -1], 0);
-m = size_lti(sys, 2)
+A=0;B=[1 0];C=1;D=[0 0];
+sys=syslin("c",A,B,C,D);
+m = size_lti(sys,2)
 ```
 ```
  m = 
 
-   1.
+   2.
 ```
 
 4.
