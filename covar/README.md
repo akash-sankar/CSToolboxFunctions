@@ -77,3 +77,15 @@ at line    18 of function covar_control ( C:\Users\Desktop\Scilab\covar1.sci lin
 
 lyap: Wrong type for input argument #2: Must be a square matrix.
 ```
+
+6.
+```
+s = poly(0, 's');
+sys = syslin('c', 1/(s - 1));
+[p, q] = covar_control(sys, 5)
+```
+```
+at line    12 of function covar_control ( C:\Users\KARTHIK\Downloads\CSToolboxFunctions-main\CSToolboxFunctions-main\covar\covar.sci line 26 )
+
+covar: system must be stable
+```
