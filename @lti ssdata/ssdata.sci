@@ -18,11 +18,13 @@ Description:
 */
 function [a, b, c, d, tsam] = ssdata(sys, tsam_in, e_in)
     
-    if typeof(sys) <> 'state-space' then
+    if typeof(sys) == 'rational' then
+        sys = tf2ss(sys);
+    elseif typeof(sys) <> 'state-space' then
         error("Input must be a syslin (state-space) system");
     end
     
-    if sys.dt == 'd' & argn(2) < 2 then
+    if sys.dt == 'd' & argn(2) < 2 & argn(1) > 4 then
         error("ssdata: tsam not provided for the discrete time system");
     end
     
@@ -30,9 +32,9 @@ function [a, b, c, d, tsam] = ssdata(sys, tsam_in, e_in)
         e_in = [];
     end
     
-    [a, b, c, d, e] = __sys_data__(sys, e_in);
+    [a, b, c, d, e] = __sys_data__(sys);
 
-    [a, b, c, d, e] = __dss2ss__(a, b, c, d, e);
+    [a, b, c, d, e] = __dss2ss__(a, b, c, d, e_in);
     
     if sys.dt == 'c' then
         if argn(2) > 2 & tsam_in <> 0 then
@@ -40,23 +42,18 @@ function [a, b, c, d, tsam] = ssdata(sys, tsam_in, e_in)
         else
             tsam = 0;
         end
-    else
+    elseif  argn(1) > 4
         tsam = tsam_in;
     end
     
 endfunction
 
-function [a, b, c, d, e] = __sys_data__(sys, e_in)
+function [a, b, c, d, e] = __sys_data__(sys)
     a = sys.A;
     b = sys.B;
     c = sys.C;
     d = sys.D;
-
-    if argn(2) < 2 then
-        e = [];
-    else
-        e = e_in;
-    end
+    e = [];
 endfunction
 
 function [a, b, c, d, e] = __dss2ss__(a, b, c, d, e)
