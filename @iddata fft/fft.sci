@@ -51,20 +51,16 @@ function dat = fft_iddata(dat, n)
     else
         error("iddata: fft: second argument invalid");
     end
-
+    
+    // All three cellfun() combined in a single loop
     for i = 1:e
         ni = nlist(i);
-
+        
+        //dat.y = cellfun (@(y, n) fft (y, n, 1)(1:fix(n/2)+1, :) / sqrt (n), dat.y, n, "uniformoutput", false);
         if type(dat.y(i)) == 15 then
             y = dat.y(i)(1);
         else
             y = dat.y(i);
-        end
-
-        if type(dat.u(i)) == 15 then
-            u = dat.u(i)(1);
-        else
-            u = dat.u(i);
         end
 
         ny = size(y, 1);
@@ -77,18 +73,26 @@ function dat = fft_iddata(dat, n)
         fy = fft(y_pad, -1, 1);
         fy = fy(1:int(ni/2)+1, :) / sqrt(ni);
         dat.y(i) = list(fy); 
-
+        
+        //dat.u = cellfun (@(u, n) fft (u, n, 1)(1:fix(n/2)+1, :) / sqrt (n), dat.u, n, "uniformoutput", false);
+        if type(dat.u(i)) == 15 then
+            u = dat.u(i)(1);
+        else
+            u = dat.u(i);
+        end
+        
         nu = size(u, 1);
         if nu < ni then
             u_pad = [u; zeros(ni - nu, size(u, 2))];
         else
             u_pad = u(1:ni, :);
         end
-
+        
         fu = fft(u_pad, -1, 1);
         fu = fu(1:int(ni/2)+1, :) / sqrt(ni);
         dat.u(i) = list(fu);
-
+        
+        //dat.w = cellfun (@(n, tsam) (0:fix(n/2)).' * (2*pi/abs(tsam)/n), n, dat.tsam, "uniformoutput", false);
         tsam = dat.tsam(i);
         dat.w(i) = (2 * %pi / abs(tsam) / ni) * (0:int(ni/2))';
     end
