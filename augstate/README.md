@@ -51,14 +51,77 @@ sys = syslin('c', A, B, C, D);
 
 2.
 ```
+sys = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
+inn = {'Force', 'Torque'};
+stn = {'Position', 'Velocity'};
+outn = {'Displacement', 'Speed'};
+ing = struct('MechanicalForces', 1, 'RotationalForces', 2);
+outg = struct('PositionMeasurements', 1, 'VelocityMeasurements', 2);
+[augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
+```
+```
+ augsys = [4x2 state-space]
+
+  A (matrix) = [0,1;-2,-3]
+  B (matrix) = [1,0;0,1]
+  C (matrix) = [1,0;0,1;1,0;0,1]
+  D (matrix) = [0,0;0,0;0,0;0,0]
+  X0 (initial state) = [0;0]
+  dt (time domain) = "c"
+
+ augsysn = [struct] with fields:
+
+  inname = {"Force","Torque"}
+  stname = {"Position","Velocity"}
+  outname: {1x4 cell}
+  ingroup: [struct] with fields:
+      MechanicalForces = 1
+      RotationalForces = 2
+  outgroup: [struct] with fields:
+      PositionMeasurements = 1
+      VelocityMeasurements = 2
+```
+
+3.
+```
 A = [0 1; -2 -3];
-B = [0; 1];
-C = [1 0];
-D = [0];
-sys = syslin('c', A, B, C, D);
+B = [0 1; 1 0];
+C = [1 0; 0 1];
+D = zeros(2,2);
+sys = syslin('d', A, B, C, D);
+inn = {'Force', 'Torque'};
+stn = {'Position', 'Velocity'};
+outn = {'Displacement', 'Speed'};
+[augsys, augsysn] = augstate(sys, inn, stn, outn)
+```
+```
+ augsys = [4x2 state-space]
+
+  A (matrix) = [0,1;-2,-3]
+  B (matrix) = [0,1;1,0]
+  C (matrix) = [1,0;0,1;1,0;0,1]
+  D (matrix) = [0,0;0,0;0,0;0,0]
+  X0 (initial state) = [0;0]
+  dt (time domain) = "d"
+
+ augsysn = [struct] with fields:
+
+  inname = {"u1","u2"}
+  stname = {"x1","x2"}
+  outname = {"y1","y2","y3","y4"}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
+```
+
+4.
+```
+s = poly(0, 's');
+sys = syslin('c', 1 / (s^2 + 3*s + 2));
 [augsys, augsysn] = augstate(sys)
 ```
 ```
+WARNING: augstate: system not in state-space form. Converting to syslin.
+
  augsys = [3x1 state-space]
 
   A (matrix) = [0,1;-2,-3]
@@ -75,45 +138,6 @@ sys = syslin('c', A, B, C, D);
   outname = {"y1","y2","y3"}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
-```
-
-3.
-```
-A = [0 1; -2 -3];
-B = [0 1; 1 0];
-C = [1 0; 0 1];
-D = zeros(2,2);
-sys = syslin('d', A, B, C, D);
-[augsys, augsysn] = augstate(sys)
-```
-```
- augsys = [4x2 state-space]
-
-  A (matrix) = [0,1;-2,-3]
-  B (matrix) = [0,1;1,0]
-  C (matrix) = [1,0;0,1;1,0;0,1]
-  D (matrix) = [0,0;0,0;0,0;0,0]
-  X0 (initial state) = [0;0]
-  dt (time domain) = "d"
-```
-
-4.
-```
-s = poly(0, 's');
-sys = syslin('c', 1 / (s^2 + 3*s + 2));
-[augsys, augsysn] = augstate(sys)
-```
-```
-WARNING: augstate: system not in state-space form. Converting to syslin.
-
- aug_sys5 = [3x1 state-space]
-
-  A (matrix) = [0,1;-2,-3]
-  B (matrix) = [0;1]
-  C (matrix) = [1,0;1,0;0,1]
-  D (matrix) = [0;0;0]
-  X0 (initial state) = [0;0]
-  dt (time domain) = "c"
 ```
 
 5.
@@ -133,6 +157,14 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
   D (matrix) = [0;0;0]
   X0 (initial state) = [0;0]
   dt (time domain) = "d"
+
+ augsysn = [struct] with fields:
+
+  inname = {"u1"}
+  stname = {"x1","x2"}
+  outname = {"y1","y2","y3"}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
 ```
 
 6.
@@ -147,8 +179,8 @@ sys2 = syslin('c', 1 / (s^2 + 3*s + 2));
 [augsys, augsysn] = augstate(sys1, sys2)
 ```
 ```
-at line     2 of function augstate ( C:\Users\KARTHIK\Desktop\Scilab\augstate.sci line 2 )
+at line    44 of function augstate ( C:\Users\Downloads\CSToolboxFunctions-main\CSToolboxFunctions-main\augstate\augstate.sci line 58 )
 
-Wrong number of input arguments.
+augstate: inn should be a cell
 ```
 
