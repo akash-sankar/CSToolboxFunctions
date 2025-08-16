@@ -56,6 +56,9 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         ing  = struct();
         outg = struct();
     case 2
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
         stn  = {};
         for i = 1:nx
             stn{1, i} = 'x'+string(i)
@@ -67,6 +70,12 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         ing  = struct();
         outg = struct();
     case 3
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
         outn = {};
         for i = 1:ny
             outn{1, i} = 'y'+string(i)
@@ -74,19 +83,58 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         ing  = struct();
         outg = struct();
     case 4
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: outn should be a cell");
+        end
+        outn_size = size(outn, 2);
         for i = size(outn,2)+1:ny
-            outn{1, i} = stn{1, i - size(outn, 2)};
+            outn{1, i} = stn{1, i - outn_size};
         end
         ing  = struct();
         outg = struct();
     case 5
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: outn should be a cell");
+        end
+        if typeof(ing) <> "st" then
+            error("augstate: ing should be a struct");
+        end
+        outn_size = size(outn, 2);
         for i = size(outn,2)+1:ny
-            outn{1, i} = stn{1, i - size(outn, 2)};
+            outn{1, i} = stn{1, i - outn_size};
         end
         outg = struct();
     case 6
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(ing) <> "st" then
+            error("augstate: ing should be a struct");
+        end
+        if typeof(outg) <> "st" then
+            error("augstate: outg should be a struct");
+        end
+        outn_size = size(outn, 2);
         for i = size(outn,2)+1:ny
-            outn{1, i} = stn{1, i - size(outn, 2)};
+            outn{1, i} = stn{1, i - outn_size};
         end
     end
     
