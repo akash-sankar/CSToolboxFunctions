@@ -18,7 +18,7 @@ The function computes the output covariance `p` and the state covariance `q` ass
 1.
 ```
 sys = syslin("c", -1, 1, 1, 0);
-[p, q] = covar(sys, 5)
+[p, q] = covar_control(sys, 5)
 ```
 ```
  p = 
