@@ -28,10 +28,10 @@ B = [0; 1];
 C = [1 0];
 D = [0];
 sys = syslin('c', A, B, C, D);
-augsys = augstate(sys)
+[augsys, augsysn] = augstate(sys)
 ```
 ```
- aug_sys1 = [3x1 state-space]
+ augsys = [3x1 state-space]
 
   A (matrix) = [0,1;-2,-3]
   B (matrix) = [0;1]
@@ -39,16 +39,52 @@ augsys = augstate(sys)
   D (matrix) = [0;0;0]
   X0 (initial state) = [0;0]
   dt (time domain) = "c"
+
+ augsysn = [struct] with fields:
+
+  inname = {"u1"}
+  stname = {"x1","x2"}
+  outname = {"y1","y2","y3"}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
 ```
 
 2.
+```
+A = [0 1; -2 -3];
+B = [0; 1];
+C = [1 0];
+D = [0];
+sys = syslin('c', A, B, C, D);
+[augsys, augsysn] = augstate(sys)
+```
+```
+ augsys = [3x1 state-space]
+
+  A (matrix) = [0,1;-2,-3]
+  B (matrix) = [0;1]
+  C (matrix) = [1,0;1,0;0,1]
+  D (matrix) = [0;0;0]
+  X0 (initial state) = [0;0]
+  dt (time domain) = "c"
+
+ augsysn = [struct] with fields:
+
+  inname = {"u1"}
+  stname = {"x1","x2"}
+  outname = {"y1","y2","y3"}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
+```
+
+3.
 ```
 A = [0 1; -2 -3];
 B = [0 1; 1 0];
 C = [1 0; 0 1];
 D = zeros(2,2);
 sys = syslin('d', A, B, C, D);
-augsys = augstate(sys)
+[augsys, augsysn] = augstate(sys)
 ```
 ```
  augsys = [4x2 state-space]
@@ -61,11 +97,11 @@ augsys = augstate(sys)
   dt (time domain) = "d"
 ```
 
-3.
+4.
 ```
 s = poly(0, 's');
 sys = syslin('c', 1 / (s^2 + 3*s + 2));
-augsys = augstate(sys)
+[augsys, augsysn] = augstate(sys)
 ```
 ```
 WARNING: augstate: system not in state-space form. Converting to syslin.
@@ -80,11 +116,11 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
   dt (time domain) = "c"
 ```
 
-4.
+5.
 ```
 z = poly(0, 'z');
 sys = syslin('d', 1 / (z^2 + 3*z + 2));
-augsys = augstate(sys)
+[augsys, augsysn] = augstate(sys)
 ```
 ```
 WARNING: augstate: system not in state-space form. Converting to syslin.
@@ -99,7 +135,7 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
   dt (time domain) = "d"
 ```
 
-5.
+6.
 ```
 A = [0 1; -2 -3];
 B = [0; 1];
@@ -108,7 +144,7 @@ D = [0];
 sys1 = syslin('c', A, B, C, D);
 s = poly(0, 's');
 sys2 = syslin('c', 1 / (s^2 + 3*s + 2));
-augsys = augstate(sys1, sys2)
+[augsys, augsysn] = augstate(sys1, sys2)
 ```
 ```
 at line     2 of function augstate ( C:\Users\KARTHIK\Desktop\Scilab\augstate.sci line 2 )
