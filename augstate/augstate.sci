@@ -80,7 +80,14 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         ing  = struct();
         outg = struct();
     case 5
+        for i = size(outn,2)+1:ny
+            outn{1, i} = stn{1, i - size(outn, 2)};
+        end
         outg = struct();
+    case 6
+        for i = size(outn,2)+1:ny
+            outn{1, i} = stn{1, i - size(outn, 2)};
+        end
     end
     
     augsysn.inname = inn;
