@@ -58,6 +58,7 @@ outn = {'Displacement', 'Speed'};
 ing = struct('MechanicalForces', 1, 'RotationalForces', 2);
 outg = struct('PositionMeasurements', 1, 'VelocityMeasurements', 2);
 [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
+augsysn.outname
 ```
 ```
  augsys = [4x2 state-space]
@@ -80,6 +81,10 @@ outg = struct('PositionMeasurements', 1, 'VelocityMeasurements', 2);
   outgroup: [struct] with fields:
       PositionMeasurements = 1
       VelocityMeasurements = 2
+
+ ans = {1x4 cell}
+
+  "Displacement"    "Speed"    "Position"    "Velocity"
 ```
 
 3.
@@ -93,6 +98,7 @@ inn = {'Force', 'Torque'};
 stn = {'Position', 'Velocity'};
 outn = {'Displacement', 'Speed'};
 [augsys, augsysn] = augstate(sys, inn, stn, outn)
+augsysn.outname
 ```
 ```
  augsys = [4x2 state-space]
@@ -106,11 +112,15 @@ outn = {'Displacement', 'Speed'};
 
  augsysn = [struct] with fields:
 
-  inname = {"u1","u2"}
-  stname = {"x1","x2"}
-  outname = {"y1","y2","y3","y4"}
+  inname = {"Force","Torque"}
+  stname = {"Position","Velocity"}
+  outname: {1x4 cell}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
+
+ ans = {1x4 cell}
+
+  "Displacement"    "Speed"    "Position"    "Velocity"
 ```
 
 4.
