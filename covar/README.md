@@ -14,6 +14,9 @@ The function computes the output covariance `p` and the state covariance `q` ass
 - `sys`: LTI model in state-space form.
 - `w`: Intensity (scalar or matrix) of the Gaussian white noise inputs which drive the system.
 
+## Dependencies
+[@lti/ssdata](https://github.com/akash-sankar/CSToolboxFunctions/tree/main/%40lti%20ssdata)
+
 ## Examples
 1.
 ```
