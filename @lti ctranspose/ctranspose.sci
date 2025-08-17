@@ -27,9 +27,9 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
     end
     
     [p, m] = size_lti(sys);
-    ct = (sys.dt == "c");
+    ct = (sys.dt == "c");   // fixed string compare
     
-    [sys, sysn] = __ctranspose__(sys, ein, ct);
+    [sys, eout, sysn] = __ctranspose__(sys, ein, ct);
     
     sysn.inname  = repmat ({""}, p, 1);
     sysn.outname = repmat ({""}, m, 1);
