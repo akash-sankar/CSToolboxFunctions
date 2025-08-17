@@ -3,7 +3,7 @@
 Calling Sequence:
     [sysout, eout, sysn] = ctranspose(sys, ein)
 Parameters:
-    sys (State-space): System to be transposed.
+    sys (State-space/Rational): System to be transposed.
     ein (Real matrix): Descriptor matrix (n-by-n).
     sysout (State-space): Conjugate transposed of sys.
     eout (Real matrix): Measurement matrix (p-by-n).
@@ -17,8 +17,13 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
     if argn(2) < 2 then
         ein = [];
     end
+    
     if typeof(ein) <> "constant" then
         error("ctranspose: ein must be an array");
+    end
+    
+    if typeof(sys) == "rational" then
+        sys = tf2ss(sys);
     end
     
     [p, m] = size_lti(sys);
