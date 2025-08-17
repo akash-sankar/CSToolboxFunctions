@@ -19,108 +19,110 @@ Conjugate transpose or pertransposition of LTI objects. Used by Octave for "sysâ
 ## Examples
 1.
 ```
-A = [0 1; -2 -3];
-B = [0 1 0 0; 1 0 1 1];
-C = [1 0; 0 1; 1 1];
-D = zeros(3,4);
-P = syslin("c", A, B, C, D);
-[P, P_inout] = mktito(P, 1, 2)
+sys = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
+[sys, eout, sysn] = ctranspose(sys)
 ```
 ```
- P = [3x4 state-space]
+ sys = [2x2 state-space]
 
-  A (matrix) = [0,1;-2,-3]
-  B (matrix) = [0,1,0,0;1,0,1,1]
-  C (matrix) = [1,0;0,1;1,1]
-  D (matrix) = [0,0,0,0;0,0,0,0;0,0,0,0]
+  A (matrix) = [0,2;-1,3]
+  B (matrix) = [-1,0;0,-1]
+  C (matrix) = [1,0;0,1]
+  D (matrix) = [0,0;0,0]
   X0 (initial state) = [0;0]
   dt (time domain) = "c"
 
- P_inout = [struct] with fields:
+ eout = 
 
-  outgroup: [struct] with fields:
-      Y1 = [1,2]
-      Y2 = 3
-  ingroup: [struct] with fields:
-      U1 = [1,2]
-      U2 = [3,4]
-  outname = ["y1";"y2";"y3"]
-  inname = ["u1";"u2";"u3";"u4"]
+    []
+
+ sysn = [struct] with fields:
+
+  stname = {"";""}
+  inname = {"";""}
+  outname = {"";""}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
 ```
 
 2.
 ```
-A = [0 1; -2 -3];
-B = [0 1 0 0; 1 0 1 1];
-C = [1 0; 0 1; 1 1];
-D = zeros(3,4);
-P = syslin("c", A, B, C, D);
-P = ss2tf(P);
-[P, P_inout]=mktito(P,1,2)
+sys = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
+[sys, eout, sysn] = ctranspose(sys, [1 0; 0 0])
 ```
 ```
- P = [3x4 state-space]
+ sys = [2x2 state-space]
 
-  A (matrix) = [-0.4615385,0.5704768;-1.4521228,-2.5384615]
-  B (matrix) = [0,-0.6793662,0,0;-1.1908744,-0.5496343,-1.1908744,-1.1908744]
-  C (matrix) = [-1.4719601,2.776D-17;0.6793662,-0.8397191;-0.7925939,-0.8397191]
-  D (matrix) = [0,0,0,0;0,0,0,0;0,0,0,0]
+  A (matrix) = [0,2;-1,3]
+  B (matrix) = [-1,0;0,-1]
+  C (matrix) = [1,0;0,1]
+  D (matrix) = [0,0;0,0]
   X0 (initial state) = [0;0]
   dt (time domain) = "c"
 
- P_inout = [struct] with fields:
+ eout = [2x2 double]
 
-  outgroup: [struct] with fields:
-      Y1 = [1,2]
-      Y2 = 3
-  ingroup: [struct] with fields:
-      U1 = [1,2]
-      U2 = [3,4]
-  outname = ["y1";"y2";"y3"]
-  inname = ["u1";"u2";"u3";"u4"]
+   1.   0.
+   0.   0.
+
+ sysn = [struct] with fields:
+
+  stname = {"";""}
+  inname = {"";""}
+  outname = {"";""}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
 ```
 
 3.
 ```
-A = [0 1; -2 -3];
-B = [0 1 0 0; 1 0 1 1];
-C = [1 0; 0 1; 1 1];
-D = zeros(3,4);
-P = syslin("c", A, B, C, D);
-[P, P_inout] = mktito(P, 0, 2)
+s = poly(0, 's');
+sys = syslin('c', 1 / (s^2 + 3*s + 2));
+[sys, eout, sysn] = ctranspose(sys)
 ```
 ```
-at line    18 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 18 )
+ sys = [state-space]
 
-mktito: second argument 'nmeas' invalid
+  A (matrix) = [0,2;-1,3]
+  B (matrix) = [-1;0]
+  C (matrix) = [0,1]
+  D (matrix) = 0
+  X0 (initial state) = [0;0]
+  dt (time domain) = "c"
+
+ eout = 
+
+    []
+
+ sysn = [struct] with fields:
+
+  stname = {"";""}
+  inname = {""}
+  outname = {""}
+  ingroup: [0x0 struct] with no field
+  outgroup: [0x0 struct] with no field
 ```
 
 4.
 ```
-A = [0 1; -2 -3];
-B = [0 1 0 0; 1 0 1 1];
-C = [1 0; 0 1; 1 1];
-D = zeros(3,4);
-P = syslin("c", A, B, C, D);
-[P, P_inout] = mktito(P, 1, 0)
+sys1 = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
+sys2 = syslin('c',[4 5; 6 7], [1 0; 0 1], [1 0; 0 0], [1 0; 0 1]);
+[sys, eout, sysn] = ctranspose(sys1, sys2)
 ```
 ```
-at line    22 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 22 )
+at line     8 of function ctranspose ( C:\Users\Desktop\ctranspose.sci line 8 )
 
-mktito: third argument 'ncon' invalid
+ctranspose: ein must be an array
 ```
 
 5.
 ```
-A = [0 1; -2 -3];
-B = [0 1 0 0; 1 0 1 1];
-C = [1 0; 0 1; 1 1];
-D = zeros(3,4);
-P = syslin("c", A, B, C, D);
-[P, P_inout] = mktito(P)
+sys1 = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
+sys2 = syslin('c',[4 5; 6 7], [1 0; 0 1], [1 0; 0 0], [1 0; 0 1]);
+[sys, eout, sysn] = ctranspose(sys1, [1 0; 0 0], sys2, [1 0; 0 1])
 ```
 ```
-at line     4 of function mktito ( C:\Users\Desktop\Scilab\mktito.sci line 4 )
+at line     3 of function ctranspose ( C:\Users\Desktop\ctranspose.sci line 3 )
 
-Usage: P = mktito(P, nmeas, ncon)
+Wrong number of input arguments.
 ```
