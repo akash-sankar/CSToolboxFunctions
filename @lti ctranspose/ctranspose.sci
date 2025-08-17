@@ -27,7 +27,7 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
     end
     
     [p, m] = size_lti(sys);
-    ct = (sys.dt == "c");   // fixed string compare
+    ct = (sys.dt == "c");
     
     [sys, sysn] = __ctranspose__(sys, ein, ct);
     
