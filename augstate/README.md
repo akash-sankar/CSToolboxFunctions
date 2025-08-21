@@ -42,9 +42,9 @@ sys = syslin('c', A, B, C, D);
 
  augsysn = [struct] with fields:
 
-  inname = {"u1"}
-  stname = {"x1","x2"}
-  outname = {"y1","y2","y3"}
+  inname = {""}
+  stname = {"";""}
+  outname = {"";"";""}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
 ```
@@ -143,38 +143,36 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
 
  augsysn = [struct] with fields:
 
-  inname = {"u1"}
-  stname = {"x1","x2"}
-  outname = {"y1","y2","y3"}
+  inname = {""}
+  stname = {"";""}
+  outname = {"";"";""}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
 ```
 
 5.
 ```
-z = poly(0, 'z');
-sys = syslin('d', 1 / (z^2 + 3*z + 2));
+sys = syslin('c', [1+%i, 2; 0, 3-%i], [0; 1+2*%i], [1-%i, 0], 0.5*%i); 
 [augsys, augsysn] = augstate(sys)
 ```
 ```
-WARNING: augstate: system not in state-space form. Converting to syslin.
-
  augsys = [3x1 state-space]
 
-  A (matrix) = [0,1;-2,-3]
-  B (matrix) = [0;1]
-  C (matrix) = [1,0;1,0;0,1]
-  D (matrix) = [0;0;0]
+  A (matrix) = [1+%i,2;0,3-%i]
+  B (matrix) = [0;1+%i*2]
+  C (matrix) = [1-%i,0;1,0;0,1]
+  D (matrix) = [%i*0.5;0;0]
   X0 (initial state) = [0;0]
-  dt (time domain) = "d"
+  dt (time domain) = "c"
 
  augsysn = [struct] with fields:
 
-  inname = {"u1"}
-  stname = {"x1","x2"}
-  outname = {"y1","y2","y3"}
+  inname = {""}
+  stname = {"";""}
+  outname = {"";"";""}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
+
 ```
 
 6.
