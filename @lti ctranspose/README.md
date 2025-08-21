@@ -5,7 +5,7 @@ Conjugate transpose or pertransposition of LTI objects. Used by Octave for "sysâ
 
 ## Calling Sequence
 - `[sysout, eout, sysn] = ctranspose(sys, ein)` - For typeof(sys) == "state-space"
-- `[sysout, sysn] = ctranspose(sys)` - For typeof(sys) == "rational"
+- `sysout = ctranspose(sys)` - For typeof(sys) == "rational"
 
 ## Parameters
 - `sys` (State-space/Rational): System to be transposed.
@@ -79,21 +79,36 @@ sys = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
 ```
 s = poly(0, 's');
 sys = syslin('c', 1 / (s^2 + 3*s + 2));
-[sys, eout, sysn] = ctranspose(sys)
+sys = ctranspose(sys)
 ```
 ```
- sys = [state-space]
+ sys = [rational] of s
 
-  A (matrix) = [0,2;-1,3]
-  B (matrix) = [-1;0]
-  C (matrix) = [0,1]
-  D (matrix) = 0
+   1 +2.587D-16s  
+   -------------  
+    2 -3s +s^2 
+```
+
+4.
+```
+sys = syslin('c', [1+%i, 2; 0, 3-%i], [0; 1+2*%i], [1-%i, 0], 0.5*%i); 
+ein = [1, 0; 0, 2+%i];
+[sysout, eout, sysn] = ctranspose(sys, ein)
+```
+```
+ sysout = [state-space]
+
+  A (matrix) = [-1-%i,0;-2,-3+%i]
+  B (matrix) = [-1+%i;0]
+  C (matrix) = [0,1+%i*2]
+  D (matrix) = %i*0.5
   X0 (initial state) = [0;0]
   dt (time domain) = "c"
 
- eout = 
+ eout = [2x2 double]
 
-    []
+   1. + 0.i   0. + 0.i
+   0. + 0.i   2. + i  
 
  sysn = [struct] with fields:
 
@@ -104,7 +119,7 @@ sys = syslin('c', 1 / (s^2 + 3*s + 2));
   outgroup: [0x0 struct] with no field
 ```
 
-4.
+5.
 ```
 sys1 = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
 sys2 = syslin('c',[4 5; 6 7], [1 0; 0 1], [1 0; 0 0], [1 0; 0 1]);
@@ -116,7 +131,7 @@ at line     8 of function ctranspose ( C:\Users\Desktop\ctranspose.sci line 8 )
 ctranspose: ein must be an array
 ```
 
-5.
+6.
 ```
 sys1 = syslin('c',[0 1; -2 -3], [1 0; 0 1], [1 0; 0 1], [0 0;0 0]);
 sys2 = syslin('c',[4 5; 6 7], [1 0; 0 1], [1 0; 0 0], [1 0; 0 1]);
