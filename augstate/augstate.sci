@@ -1,7 +1,7 @@
 /*2025 Author: Akash S <akash.ktsn@gmail.com>*/
 /*
 Calling Sequence:
-    [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
+    augsys = augstate (sys)
 Parameters:
     augsys (State-space/Transfer function): Output system.
     augsysn (Structure): Output system information.
@@ -41,32 +41,17 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
 
     select argn(2)
     case 1
-        inn  = {};
-        for i = 1:nu
-            inn{1, i} = 'u'+string(i)
-        end
-        stn  = {};
-        for i = 1:nx
-            stn{1, i} = 'x'+string(i)
-        end
-        outn = {};
-        for i = 1:ny
-            outn{1, i} = 'y'+string(i)
-        end
-        ing  = struct();
+        inn  = repmat ({""}, nu, 1);
+        stn  = repmat ({""}, nx, 1);
+        outn = repmat ({""}, ny, 1);
+        ing = struct();
         outg = struct();
     case 2
         if typeof(inn) <> "ce" then
             error("augstate: inn should be a cell");
         end
-        stn  = {};
-        for i = 1:nx
-            stn{1, i} = 'x'+string(i)
-        end
-        outn = {};
-        for i = 1:ny
-            outn{1, i} = 'y'+string(i)
-        end
+        stn  = repmat ({""}, nx, 1);
+        outn = repmat ({""}, ny, 1);
         ing  = struct();
         outg = struct();
     case 3
@@ -76,10 +61,7 @@ function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
         if typeof(stn) <> "ce" then
             error("augstate: stn should be a cell");
         end
-        outn = {};
-        for i = 1:ny
-            outn{1, i} = 'y'+string(i)
-        end
+        outn = repmat ({""}, ny, 1);
         ing  = struct();
         outg = struct();
     case 4
