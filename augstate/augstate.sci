@@ -1,87 +1,146 @@
 /*2025 Author: Akash S <akash.ktsn@gmail.com>*/
 /*
 Calling Sequence:
-    [sysout, eout, sysn] = ctranspose(sys, ein) // For typeof(sys) == "state-space"
-    [sysout, sysn] = ctranspose(sys) // For typeof(sys) == "rational"
+    [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
 Parameters:
-    sys (State-space/Rational): System to be transposed.
-    ein (Real matrix): Descriptor matrix (n-by-n).
-    sysout (State-space): Conjugate transposed of sys.
-    eout (Real matrix): Measurement matrix (p-by-n).
-    sysn (Structure): System input, state and output names of sysout.
+    augsys (State-space/Transfer function): Output system.
+    augsysn (Structure): Output system information.
+    sys (State-space/Transfer function): Input system.
+    inn, stn, outn, ing, outg (Vector): Input variable names, State variable names, Output variable names, Input grouping information and Output grouping information.
 Description:
-    Conjugate transpose or pertransposition of LTI objects. Used by Octave for "sys’". For a transfer-function matrix G, G’ denotes the conjugate of G given by G.’(-s) for a continuous-time system or G.’(1/z) for a discrete-time system. 
-    The frequency response of the pertransposition of G is the Hermitian (conjugate) transpose of G(jw), i.e. freqresp (G’, w) = freqresp (G, w)’. WARNING: Do NOT use this for dual problems, use the transpose "sys.’" (note the dot) instead.
+    Append state vector x of system sys to output vector y.
+         .                  .
+         x = A x + B u      x = A x + B u
+         y = C x + D u  =>  y = C x + D u
+                            x = I x + O u
 */
-function [sys, eout, sysn] = ctranspose(sys, ein)
+function [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)
     
-    if argn(2) < 2 then
-        ein = [];
+    if argn(2) < 1 | argn(2) > 6 then
+        error("Usage: [augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg);")
     end
     
-    if typeof(ein) <> "constant" then
-        error("ctranspose: ein must be an array");
+    if typeof(sys) <> "state-space" & typeof(sys) == 'rational' then
+        warning("augstate: system not in state-space form. Converting to syslin.");
+        sys = tf2ss(sys);
     end
     
-    tf_flag = 0
-    if typeof(sys) == "rational" then
-        domain = sys.dt;
-        if argn(1) > 2 then
-            error("ctranspose: If input is a transfer function then, [sys, sysn] = ctranspose(sys)");
-        end
-        tf_flag = 1
-        sys = tf2des(sys);
-        ein = sys.E;
-        sys = syslin(domain, sys.A, sys.B, sys.C, sys.D);
-    end
+    [A, B, C, D] = abcd(sys);
     
-    [p, m] = size_lti(sys);
-    ct = (sys.dt == "c");
-    
-    [sys, eout, sysn] = __ctranspose__(sys, ein, ct);
-    
-    if tf_flag == 1 then
-        sl = list('des',sys.A,sys.B,sys.C,sys.D,eout);
-        sl = des2ss(sl);
-        sys =  ss2tf(sl);
-        eout = sysn;
-        eout.inname  = repmat ({""}, p, 1);
-        eout.outname = repmat ({""}, m, 1);
-        eout.ingroup = struct();
-        eout.outgroup = struct();
-    else
-        sysn.inname  = repmat ({""}, p, 1);
-        sysn.outname = repmat ({""}, m, 1);
-        sysn.ingroup = struct();
-        sysn.outgroup = struct();
-    end
-endfunction
+    n = size(A, 'r');
+    [p, m] = size(D);
 
-function [sys, eout, sysn] = __ctranspose__(sys, ein, ct)
-    a = sys.a;
-    b = sys.b;
-    c = sys.c;
-    d = sys.d;
-    e = ein;
+    C_aug = [C; eye(n, n)];
+    D_aug = [D; zeros(n, m)];
+
+    augsys = syslin(sys("dt"), A, B, C_aug, D_aug);
     
-    if ct then
-        sys.a = -a';
-        sys.b = -c';
-        sys.c = b';
-        sys.d = d';
-        eout = e';
-        sysn.stname = repmat ({""}, size (a, 1), 1);
-    else
-        [n, m] = size(b);
-        p = size(c, 1);
-        if isempty(e) then
-            e = eye(n, n);
+    nx = size(A, 1);
+    nu = size(B, 2);
+    ny = size(C_aug, 1); 
+
+    select argn(2)
+    case 1
+        inn  = {};
+        for i = 1:nu
+            inn{1, i} = 'u'+string(i)
         end
-        sys.a = blockdiag(e', eye(p, p));
-        sys.b = [zeros(n, p); -eye(p, p)];
-        sys.c = [b', zeros(m, p)];
-        sys.d = d';
-        eout = [a', c'; zeros(p, n+p)];
-        sysn.stname = repmat ({""}, n+p, 1);
+        stn  = {};
+        for i = 1:nx
+            stn{1, i} = 'x'+string(i)
+        end
+        outn = {};
+        for i = 1:ny
+            outn{1, i} = 'y'+string(i)
+        end
+        ing  = struct();
+        outg = struct();
+    case 2
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        stn  = {};
+        for i = 1:nx
+            stn{1, i} = 'x'+string(i)
+        end
+        outn = {};
+        for i = 1:ny
+            outn{1, i} = 'y'+string(i)
+        end
+        ing  = struct();
+        outg = struct();
+    case 3
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
+        outn = {};
+        for i = 1:ny
+            outn{1, i} = 'y'+string(i)
+        end
+        ing  = struct();
+        outg = struct();
+    case 4
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: outn should be a cell");
+        end
+        outn_size = size(outn, 2);
+        for i = size(outn,2)+1:ny
+            outn{1, i} = stn{1, i - outn_size};
+        end
+        ing  = struct();
+        outg = struct();
+    case 5
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: stn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: outn should be a cell");
+        end
+        if typeof(ing) <> "st" then
+            error("augstate: ing should be a struct");
+        end
+        outn_size = size(outn, 2);
+        for i = size(outn,2)+1:ny
+            outn{1, i} = stn{1, i - outn_size};
+        end
+        outg = struct();
+    case 6
+        if typeof(inn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(stn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(outn) <> "ce" then
+            error("augstate: inn should be a cell");
+        end
+        if typeof(ing) <> "st" then
+            error("augstate: ing should be a struct");
+        end
+        if typeof(outg) <> "st" then
+            error("augstate: outg should be a struct");
+        end
+        outn_size = size(outn, 2);
+        for i = size(outn,2)+1:ny
+            outn{1, i} = stn{1, i - outn_size};
+        end
     end
+    
+    augsysn.inname = inn;
+    augsysn.stname = stn;
+    augsysn.outname = outn;
+    augsysn.ingroup = ing;
+    augsysn.outgroup = outg;
 endfunction
