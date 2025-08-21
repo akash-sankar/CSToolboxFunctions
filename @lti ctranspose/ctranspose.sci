@@ -2,7 +2,7 @@
 /*
 Calling Sequence:
     [sysout, eout, sysn] = ctranspose(sys, ein) // For typeof(sys) == "state-space"
-    sysout = ctranspose(sys) // For typeof(sys) == "rational"
+    [sysout] = ctranspose(sys) // For typeof(sys) == "rational"
 Parameters:
     sys (State-space/Rational): System to be transposed.
     ein (Real matrix): Descriptor matrix (n-by-n).
@@ -22,7 +22,7 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
     if typeof(ein) <> "constant" then
         error("ctranspose: ein must be an array");
     end
-
+    
     tf_flag = 0
     if typeof(sys) == "rational" then
         domain = sys.dt;
@@ -44,6 +44,11 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
         sl = list('des',sys.A,sys.B,sys.C,sys.D,eout);
         sl = des2ss(sl);
         sys =  ss2tf(sl);
+        eout = struct();
+        eout.inname  = repmat ({""}, p, 1);
+        eout.outname = repmat ({""}, m, 1);
+        eout.ingroup = struct();
+        eout.outgroup = struct();
     else
         sysn.inname  = repmat ({""}, p, 1);
         sysn.outname = repmat ({""}, m, 1);
@@ -60,11 +65,11 @@ function [sys, eout, sysn] = __ctranspose__(sys, ein, ct)
     e = ein;
     
     if ct then
-        sys.a = -a';
-        sys.b = -c';
-        sys.c = b';
-        sys.d = d';
-        eout = e';
+        sys.a = conj(-a');
+        sys.b = conj(-c');
+        sys.c = conj(b');
+        sys.d = conj(d');
+        eout = conj(e');
         sysn.stname = repmat ({""}, size (a, 1), 1);
     else
         [n, m] = size(b);
@@ -72,11 +77,11 @@ function [sys, eout, sysn] = __ctranspose__(sys, ein, ct)
         if isempty(e) then
             e = eye(n, n);
         end
-        sys.a = blockdiag(e', eye(p, p));
-        sys.b = [zeros(n, p); -eye(p, p)];
-        sys.c = [b', zeros(m, p)];
-        sys.d = d';
-        eout = [a', c'; zeros(p, n+p)];
+        sys.a = conj(blockdiag(e', eye(p, p)));
+        sys.b = conj([zeros(n, p); -eye(p, p)]);
+        sys.c = conj([b', zeros(m, p)]);
+        sys.d = conj(d');
+        eout = conj([a', c'; zeros(p, n+p)]);
         sysn.stname = repmat ({""}, n+p, 1);
     end
 endfunction
