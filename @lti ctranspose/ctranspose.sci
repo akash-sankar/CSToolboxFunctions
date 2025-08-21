@@ -6,7 +6,7 @@ Calling Sequence:
 Parameters:
     sys (State-space/Rational): System to be transposed.
     ein (Real matrix): Descriptor matrix (n-by-n).
-    sysout (State-space): Conjugate transposed of sys.
+    sysout (State-space/Rational): Conjugate transposed of sys.
     eout (Real matrix): Measurement matrix (p-by-n).
     sysn (Structure): System input, state and output names of sysout.
 Description:
