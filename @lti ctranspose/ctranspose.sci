@@ -1,7 +1,8 @@
 /*2025 Author: Akash S <akash.ktsn@gmail.com>*/
 /*
 Calling Sequence:
-    [sysout, eout, sysn] = ctranspose(sys, ein)
+    [sysout, eout, sysn] = ctranspose(sys, ein) // For typeof(sys) == "state-space"
+    [sysout, sysn] = ctranspose(sys) // For typeof(sys) == "rational"
 Parameters:
     sys (State-space/Rational): System to be transposed.
     ein (Real matrix): Descriptor matrix (n-by-n).
@@ -22,19 +23,39 @@ function [sys, eout, sysn] = ctranspose(sys, ein)
         error("ctranspose: ein must be an array");
     end
     
+    tf_flag = 0
     if typeof(sys) == "rational" then
-        sys = tf2ss(sys);
+        domain = sys.dt;
+        if argn(1) > 2 then
+            error("ctranspose: If input is a transfer function then, [sys, sysn] = ctranspose(sys)");
+        end
+        tf_flag = 1
+        sys = tf2des(sys);
+        ein = sys.E;
+        sys = syslin(domain, sys.A, sys.B, sys.C, sys.D);
     end
     
     [p, m] = size_lti(sys);
-    ct = (sys.dt == "c");   // fixed string compare
+    ct = (sys.dt == "c");
     
     [sys, eout, sysn] = __ctranspose__(sys, ein, ct);
     
-    sysn.inname  = repmat ({""}, p, 1);
-    sysn.outname = repmat ({""}, m, 1);
-    sysn.ingroup = struct();
-    sysn.outgroup = struct();
+    if tf_flag == 1 then
+        //sys = ss2tf(sys)
+        sl = list('des',sys.A,sys.B,sys.C,sys.D,eout);
+        sl = des2ss(sl);
+        sys =  ss2tf(sl);
+        eout = sysn;
+        eout.inname  = repmat ({""}, p, 1);
+        eout.outname = repmat ({""}, m, 1);
+        eout.ingroup = struct();
+        eout.outgroup = struct();
+    else
+        sysn.inname  = repmat ({""}, p, 1);
+        sysn.outname = repmat ({""}, m, 1);
+        sysn.ingroup = struct();
+        sysn.outgroup = struct();
+    end
 endfunction
 
 function [sys, eout, sysn] = __ctranspose__(sys, ein, ct)
