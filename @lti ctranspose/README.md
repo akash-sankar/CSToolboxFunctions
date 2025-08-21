@@ -3,8 +3,6 @@
 ## Description
 Conjugate transpose or pertransposition of LTI objects. Used by Octave for "sys’". For a transfer-function matrix G, G’ denotes the conjugate of G given by G.’(-s) for a continuous-time system or G.’(1/z) for a discrete-time system. The frequency response of the pertransposition of G is the Hermitian (conjugate) transpose of G(jw), i.e. freqresp (G’, w) = freqresp (G, w)’. WARNING: Do NOT use this for dual problems, use the transpose "sys.’" (note the dot) instead.
 
-NOTE: tf2ss function of GNU Octave uses Wolovich’s Observable Structure Theorem while Scilab uses a different approach (h=C*(seye()-A)^-1B+D(s)). So when a transfer function is given as input, the resultant state space representation may not match between GNU Octave & Scilab. But both forms produce identical input-output behavior.
-
 ## Calling Sequence
 - `[sysout, eout, sysn] = ctranspose(sys, ein)` - For typeof(sys) == "state-space"
 - `[sysout, sysn] = ctranspose(sys)` - For typeof(sys) == "rational"
