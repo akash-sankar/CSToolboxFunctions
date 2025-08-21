@@ -6,12 +6,13 @@ Conjugate transpose or pertransposition of LTI objects. Used by Octave for "sysâ
 NOTE: tf2ss function of GNU Octave uses Wolovichâ€™s Observable Structure Theorem while Scilab uses a different approach (h=C*(seye()-A)^-1B+D(s)). So when a transfer function is given as input, the resultant state space representation may not match between GNU Octave & Scilab. But both forms produce identical input-output behavior.
 
 ## Calling Sequence
-- `[sysout, eout, sysn] = ctranspose(sys, ein)`
+- `[sysout, eout, sysn] = ctranspose(sys, ein)` - For typeof(sys) == "state-space"
+- `[sysout, sysn] = ctranspose(sys)` - For typeof(sys) == "rational"
 
 ## Parameters
 - `sys` (State-space/Rational): System to be transposed.
 - `ein` (Real matrix): Descriptor matrix (n-by-n).
-- `sysout` (State-space): Conjugate transposed of sys.
+- `sysout` (State-space/Rational): Conjugate transposed of sys.
 - `eout` (Real matrix): Measurement matrix (p-by-n).
 - `sysn` (Structure): System input, state and output names of sysout.
 
