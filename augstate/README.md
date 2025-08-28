@@ -9,7 +9,7 @@ Append state vector x of system sys to output vector y.
                     x = I x + O u
 ```
 
-NOTE: tf2ss function of GNU Octave uses Wolovich’s Observable Structure Theorem while Scilab uses a different approach (h=C*(s*eye()-A)^-1*B+D(s)). So when a transfer function is given as input, the resultant state space representation may not match between GNU Octave & Scilab. But both forms produce identical input-output behavior.
+NOTE: ss function of GNU Octave uses Wolovich’s Observable Structure Theorem while tf2ss of Scilab uses a different approach (h=C*(s*eye()-A)^-1*B+D(s)). So when a transfer function is given as input, the resultant state space representation may not match between GNU Octave & Scilab. But both forms produce identical input-output behavior.
 
 ## Calling Sequence
 - `[augsys, augsysn] = augstate(sys, inn, stn, outn, ing, outg)`
@@ -149,6 +149,8 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
 ```
+
+The variation in the conversion of transfer functions to state-space form between Scilab and Octave is the primary reason for the differences observed in their outputs.
 
 5.
 ```
