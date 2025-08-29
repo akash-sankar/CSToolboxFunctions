@@ -127,16 +127,14 @@ augsysn.outname
 ```
 s = poly(0, 's');
 sys = syslin('c', 1 / (s^2 + 3*s + 2));
-[augsys, augsysn] = augstate(sys)
+[augsys, augsysn] = augstate(syslin('c', [0 -2; 1 -3], [-1; 0], [0 -1], 0))
 ```
 ```
-WARNING: augstate: system not in state-space form. Converting to syslin.
-
  augsys = [3x1 state-space]
 
-  A (matrix) = [0,1;-2,-3]
-  B (matrix) = [0;1]
-  C (matrix) = [1,0;1,0;0,1]
+  A (matrix) = [0,-2;1,-3]
+  B (matrix) = [-1;0]
+  C (matrix) = [0,-1;1,0;0,1]
   D (matrix) = [0;0;0]
   X0 (initial state) = [0;0]
   dt (time domain) = "c"
@@ -148,9 +146,8 @@ WARNING: augstate: system not in state-space form. Converting to syslin.
   outname = {"";"";""}
   ingroup: [0x0 struct] with no field
   outgroup: [0x0 struct] with no field
-```
 
-The variation in the conversion of transfer functions to state-space form between Scilab and Octave is the primary reason for the differences observed in their outputs.
+```
 
 5.
 ```
